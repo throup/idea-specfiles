@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-community-edition
 Version:       211.6432.7
-Release:       2%{?dist}
+Release:       3%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -25,6 +25,7 @@ Requires:      java >= 1:11
 Requires:      jre >= 1:11
 Requires:      %{name}-core = %{version}
 Requires:      %{name}-plugin-android = %{version}
+Requires:      %{name}-plugin-android-gradle-dsl = %{version}
 
 %description
 IntelliJ Java IDE based upon the Jetbrains Idea platform.
@@ -41,6 +42,12 @@ Summary:       IntelliJ Java IDE - Android plugin
 Group:         Development
 %description plugin-android
 Android plugin for Jetbrains IntelliJ.
+
+%package plugin-android-gradle-dsl
+Summary:       IntelliJ Java IDE - Android Gradle DSL plugin
+Group:         Development
+%description plugin-android-gradle-dsl
+Android Gradle DSL plugin for Jetbrains IntelliJ.
 
 
 %prep
@@ -104,9 +111,13 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications \
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+%files
 
 %files plugin-android
 %{_datadir}/%{shortname}/plugins/android
+
+%files plugin-android-gradle-dsl
+%{_datadir}/%{shortname}/plugins/android-gradle-dsl
 
 %files core
 %license %{_datadir}/%{shortname}/license
@@ -117,6 +128,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/android
+%exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 
 %changelog
 * Tue Mar 16 2021 Chris Throup <chris@throup.eu>

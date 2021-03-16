@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-ce-eap
 Version:       211.6432.7
-Release:       1
+Release:       2%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition - EAP version
 
 Group:         Development
