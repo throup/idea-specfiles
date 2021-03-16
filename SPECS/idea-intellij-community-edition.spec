@@ -7,8 +7,8 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-community-edition
-Version:       211.6432.7
-Release:       3%{?dist}
+Version:       203.7717.45
+Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -103,6 +103,8 @@ install -p -m0755 %{name} \
 desktop-file-install --dir %{buildroot}%{_datadir}/applications \
                      %{name}.desktop
 
+# Remove unwanted files
+rm %{buildroot}%{_datadir}/%{shortname}/Install-Linux-tar.txt
 
 %post -p /sbin/ldconfig
 
@@ -120,11 +122,17 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 
 %files core
+%license %{_datadir}/%{shortname}/LICENSE.txt
 %license %{_datadir}/%{shortname}/license
 %doc %{_datadir}/%{shortname}/NOTICE.txt
-%doc %{_datadir}/%{shortname}/build.txt
-%doc %{_datadir}/%{shortname}/Install-Linux-tar.txt
-%{_datadir}/%{shortname}
+%{_datadir}/%{shortname}/bin
+%{_datadir}/%{shortname}/lib
+%{_datadir}/%{shortname}/plugins
+%{_datadir}/%{shortname}/redist
+%{_datadir}/%{shortname}/brokenPlugins.db
+%{_datadir}/%{shortname}/build.txt
+%{_datadir}/%{shortname}/classpath.txt
+%{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/android
