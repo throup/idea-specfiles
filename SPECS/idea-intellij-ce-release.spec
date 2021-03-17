@@ -7,7 +7,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce-release
-Version:       203.7717.45
+Version:       203.7717.56
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
 
