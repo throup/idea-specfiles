@@ -7,8 +7,8 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-community-edition
-Version:       211.6432.7
-Release:       4%{?dist}
+Version:       211.6556.6
+Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
