@@ -7,8 +7,8 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-community-edition
-Version:       203.7717.56
-Release:       1%{?dist}
+Version:       211.6432.7
+Release:       4%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -24,8 +24,10 @@ BuildRequires: java-sdk-11
 Requires:      java >= 1:11
 Requires:      jre >= 1:11
 Requires:      %{name}-core = %{version}
+Requires:      %{name}-plugin-kotlin = %{version}
 Requires:      %{name}-plugin-android = %{version}
-#Requires:      %{name}-plugin-android-gradle-dsl = %{version}
+Requires:      %{name}-plugin-android-gradle-dsl = %{version}
+Requires:      %{name}-plugin-lombok = %{version}
 
 %description
 IntelliJ Java IDE based upon the Jetbrains Idea platform.
@@ -37,18 +39,29 @@ Group:         Development
 %description core
 Core files for Jetbrains IntelliJ.
 
+%package plugin-kotlin
+Summary:       IntelliJ Java IDE - Kotlin plugin
+Group:         Development
+%description plugin-kotlin
+Kotlin plugin for Jetbrains IntelliJ.
+
 %package plugin-android
 Summary:       IntelliJ Java IDE - Android plugin
 Group:         Development
 %description plugin-android
 Android plugin for Jetbrains IntelliJ.
 
-#%package plugin-android-gradle-dsl
-#Summary:       IntelliJ Java IDE - Android Gradle DSL plugin
-#Group:         Development
-#%description plugin-android-gradle-dsl
-#Android Gradle DSL plugin for Jetbrains IntelliJ.
+%package plugin-android-gradle-dsl
+Summary:       IntelliJ Java IDE - Android Gradle DSL plugin
+Group:         Development
+%description plugin-android-gradle-dsl
+Android Gradle DSL plugin for Jetbrains IntelliJ.
 
+%package plugin-lombok
+Summary:       IntelliJ Java IDE - Lombok plugin
+Group:         Development
+%description plugin-lombok
+Lombok plugin for Jetbrains IntelliJ.
 
 %prep
 %setup -qn "%{buildname}-%{version}"
@@ -115,11 +128,17 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 
+%files plugin-kotlin
+%{_datadir}/%{shortname}/plugins/Kotlin
+
 %files plugin-android
 %{_datadir}/%{shortname}/plugins/android
 
-#%files plugin-android-gradle-dsl
-#%{_datadir}/%{shortname}/plugins/android-gradle-dsl
+%files plugin-android-gradle-dsl
+%{_datadir}/%{shortname}/plugins/android-gradle-dsl
+
+%files plugin-lombok
+%{_datadir}/%{shortname}/plugins/lombok
 
 %files core
 %license %{_datadir}/%{shortname}/LICENSE.txt
@@ -129,16 +148,20 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/lib
 %{_datadir}/%{shortname}/plugins
 %{_datadir}/%{shortname}/redist
-#%{_datadir}/%{shortname}/brokenPlugins.db
+%{_datadir}/%{shortname}/brokenPlugins.db
 %{_datadir}/%{shortname}/build.txt
-#%{_datadir}/%{shortname}/classpath.txt
+%{_datadir}/%{shortname}/classpath.txt
 %{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/android
-#%exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
+%exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
+%exclude %{_datadir}/%{shortname}/plugins/lombok
 
 %changelog
+* Wed Mar 17 2021 Chris Throup <chris@throup.eu>
+- Split Lombok & Kotlin plugins into separate subpackages
 * Tue Mar 16 2021 Chris Throup <chris@throup.eu>
 - Split Android plugin into separate subpackage
 * Mon Mar 15 2021 Chris Throup <chris@throup.eu>
