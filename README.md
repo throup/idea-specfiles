@@ -25,10 +25,12 @@ dnf install idea-intellij-ce-eap
 ```
 
 ## Current build status
-[![Copr build status](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-eap/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-eap/)
-[![Copr build status](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-release/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-release/)
-[![Copr build status](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-community-edition/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-community-edition/)
+_Note:_ these badges show the current build status for the specific versions of the SPEC files found in the `main` branch of this repository.
+See the [Copr project page](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/) for the status of other builds.
 
+| Intellij IDEA CE (latest build version) | Latest RELEASE version | Latest EAP version |
+| --------------------------------------- | ---------------------- | ------------------ |
+| [![Copr build status](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-community-edition/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-community-edition/) | [![Copr build status](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-release/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-release/) | [![Copr build status](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-eap/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/throup/idea-intellij-community-edition/package/idea-intellij-ce-eap/) |
 
 ## Project aims
 1. Make the open source, Community Edition of this IDE available as a native package for Fedora desktops.
