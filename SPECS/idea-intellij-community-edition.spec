@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-community-edition
 Version:       211.6556.6
-Release:       1%{?dist}
+Release:       3%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -24,7 +24,11 @@ BuildRequires: java-sdk-11
 Requires:      java >= 1:11
 Requires:      jre >= 1:11
 Requires:      %{name}-core = %{version}
+Requires:      %{name}-plugin-bytecodeviewer = %{version}
+Requires:      %{name}-plugin-groovy = %{version}
 Requires:      %{name}-plugin-kotlin = %{version}
+Requires:      %{name}-plugin-intellilang = %{version}
+Requires:      %{name}-plugin-ant = %{version}
 Requires:      %{name}-plugin-android = %{version}
 Requires:      %{name}-plugin-android-gradle-dsl = %{version}
 Requires:      %{name}-plugin-lombok = %{version}
@@ -39,11 +43,35 @@ Group:         Development
 %description core
 Core files for Jetbrains IntelliJ.
 
+%package plugin-bytecodeviewer
+Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
+Group:         Development
+%description plugin-bytecodeviewer
+ByteCodeViewer plugin for Jetbrains IntelliJ.
+
+%package plugin-groovy
+Summary:       IntelliJ Java IDE - Groovy plugin
+Group:         Development
+%description plugin-groovy
+Groovy plugin for Jetbrains IntelliJ.
+
 %package plugin-kotlin
 Summary:       IntelliJ Java IDE - Kotlin plugin
 Group:         Development
 %description plugin-kotlin
 Kotlin plugin for Jetbrains IntelliJ.
+
+%package plugin-intellilang
+Summary:       IntelliJ Java IDE - Intellilang plugin
+Group:         Development
+%description plugin-intellilang
+IntelliLang plugin for Jetbrains IntelliJ.
+
+%package plugin-ant
+Summary:       IntelliJ Java IDE - Ant plugin
+Group:         Development
+%description plugin-ant
+Ant plugin for Jetbrains IntelliJ.
 
 %package plugin-android
 Summary:       IntelliJ Java IDE - Android plugin
@@ -128,8 +156,20 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 
+%files plugin-bytecodeviewer
+%{_datadir}/%{shortname}/plugins/ByteCodeViewer
+
+%files plugin-groovy
+%{_datadir}/%{shortname}/plugins/Groovy
+
 %files plugin-kotlin
 %{_datadir}/%{shortname}/plugins/Kotlin
+
+%files plugin-intellilang
+%{_datadir}/%{shortname}/plugins/IntelliLang
+
+%files plugin-ant
+%{_datadir}/%{shortname}/plugins/ant
 
 %files plugin-android
 %{_datadir}/%{shortname}/plugins/android
@@ -154,14 +194,18 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
+%exclude %{_datadir}/%{shortname}/plugins/Groovy
 %exclude %{_datadir}/%{shortname}/plugins/Kotlin
+%exclude %{_datadir}/%{shortname}/plugins/IntelliLang
+%exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
 %exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 %exclude %{_datadir}/%{shortname}/plugins/lombok
 
 %changelog
 * Wed Mar 17 2021 Chris Throup <chris@throup.eu>
-- Split Lombok & Kotlin plugins into separate subpackages
+- Split additional plugins into separate subpackages
 * Tue Mar 16 2021 Chris Throup <chris@throup.eu>
 - Split Android plugin into separate subpackage
 * Mon Mar 15 2021 Chris Throup <chris@throup.eu>
