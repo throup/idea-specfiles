@@ -36,6 +36,16 @@ Requires:      %{name}-plugin-gradle-java = %{version}
 Requires:      %{name}-plugin-gradle-java-maven = %{version}
 Requires:      %{name}-plugin-grazie = %{version}
 Requires:      %{name}-plugin-groovy = %{version}
+Requires:      %{name}-plugin-java = %{version}
+Requires:      %{name}-plugin-java-decompiler = %{version}
+Requires:      %{name}-plugin-javafx = %{version}
+Requires:      %{name}-plugin-java-i18n = %{version}
+Requires:      %{name}-plugin-java-ide-customization = %{version}
+Requires:      %{name}-plugin-junit = %{version}
+Requires:      %{name}-plugin-markdown = %{version}
+Requires:      %{name}-plugin-maven = %{version}
+Requires:      %{name}-plugin-maven-model = %{version}
+Requires:      %{name}-plugin-ml-models-local = %{version}
 Requires:      %{name}-plugin-intellilang = %{version}
 Requires:      %{name}-plugin-kotlin = %{version}
 Requires:      %{name}-plugin-lombok = %{version}
@@ -121,6 +131,66 @@ Summary:       IntelliJ Java IDE - Groovy plugin
 Group:         Development
 %description plugin-groovy
 Groovy plugin for Jetbrains IntelliJ.
+
+%package plugin-java
+Summary:       IntelliJ Java IDE - Java plugin
+Group:         Development
+%description plugin-java
+Java plugin for Jetbrains IntelliJ.
+
+%package plugin-java-decompiler
+Summary:       IntelliJ Java IDE - Java Decompiler plugin
+Group:         Development
+%description plugin-java-decompiler
+Java Decompiler plugin for Jetbrains IntelliJ.
+
+%package plugin-javafx
+Summary:       IntelliJ Java IDE - JavaFX plugin
+Group:         Development
+%description plugin-javafx
+JavaFX plugin for Jetbrains IntelliJ.
+
+%package plugin-java-i18n
+Summary:       IntelliJ Java IDE - Java I18n plugin
+Group:         Development
+%description plugin-java-i18n
+Java I18n plugin for Jetbrains IntelliJ.
+
+%package plugin-java-ide-customization
+Summary:       IntelliJ Java IDE - Java IDE Customization plugin
+Group:         Development
+%description plugin-java-ide-customization
+Java IDE Customization plugin for Jetbrains IntelliJ.
+
+%package plugin-junit
+Summary:       IntelliJ Java IDE - Junit plugin
+Group:         Development
+%description plugin-junit
+Junit plugin for Jetbrains IntelliJ.
+
+%package plugin-markdown
+Summary:       IntelliJ Java IDE - Markdown plugin
+Group:         Development
+%description plugin-markdown
+Markdown plugin for Jetbrains IntelliJ.
+
+%package plugin-maven
+Summary:       IntelliJ Java IDE - Maven plugin
+Group:         Development
+%description plugin-maven
+Maven plugin for Jetbrains IntelliJ.
+
+%package plugin-maven-model
+Summary:       IntelliJ Java IDE - Maven Model plugin
+Group:         Development
+%description plugin-maven-model
+Maven Model plugin for Jetbrains IntelliJ.
+
+%package plugin-ml-models-local
+Summary:       IntelliJ Java IDE - Machine Learning Local Models plugin
+Group:         Development
+%description plugin-ml-models-local
+Machine Learning Local Models plugin for Jetbrains IntelliJ.
 
 %package plugin-intellilang
 Summary:       IntelliJ Java IDE - Intellilang plugin
@@ -241,6 +311,36 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files plugin-groovy
 %{_datadir}/%{shortname}/plugins/Groovy
 
+%files plugin-java
+%{_datadir}/%{shortname}/plugins/java
+
+%files plugin-java-decompiler
+%{_datadir}/%{shortname}/plugins/java-decompiler
+
+%files plugin-javafx
+%{_datadir}/%{shortname}/plugins/javaFX
+
+%files plugin-java-i18n
+%{_datadir}/%{shortname}/plugins/java-i18n
+
+%files plugin-java-ide-customization
+%{_datadir}/%{shortname}/plugins/java-ide-customization
+
+%files plugin-junit
+%{_datadir}/%{shortname}/plugins/junit
+
+%files plugin-markdown
+%{_datadir}/%{shortname}/plugins/markdown
+
+%files plugin-maven
+%{_datadir}/%{shortname}/plugins/maven
+
+%files plugin-maven-model
+%{_datadir}/%{shortname}/plugins/maven-model
+
+%files plugin-ml-models-local
+%{_datadir}/%{shortname}/plugins/ml-models-local
+
 %files plugin-intellilang
 %{_datadir}/%{shortname}/plugins/IntelliLang
 
@@ -276,6 +376,16 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/gradle-java-maven
 %exclude %{_datadir}/%{shortname}/plugins/grazie
 %exclude %{_datadir}/%{shortname}/plugins/Groovy
+%exclude %{_datadir}/%{shortname}/plugins/java
+%exclude %{_datadir}/%{shortname}/plugins/java-decompiler
+%exclude %{_datadir}/%{shortname}/plugins/javaFX
+%exclude %{_datadir}/%{shortname}/plugins/java-i18n
+%exclude %{_datadir}/%{shortname}/plugins/java-ide-customization
+%exclude %{_datadir}/%{shortname}/plugins/junit
+%exclude %{_datadir}/%{shortname}/plugins/markdown
+%exclude %{_datadir}/%{shortname}/plugins/maven
+%exclude %{_datadir}/%{shortname}/plugins/maven-model
+%exclude %{_datadir}/%{shortname}/plugins/ml-models-local
 %exclude %{_datadir}/%{shortname}/plugins/IntelliLang
 %exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/lombok
