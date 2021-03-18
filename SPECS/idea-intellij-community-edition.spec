@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-community-edition
 Version:       211.6556.6
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -24,13 +24,20 @@ BuildRequires: java-sdk-11
 Requires:      java >= 1:11
 Requires:      jre >= 1:11
 Requires:      %{name}-core = %{version}
-Requires:      %{name}-plugin-bytecodeviewer = %{version}
-Requires:      %{name}-plugin-groovy = %{version}
-Requires:      %{name}-plugin-kotlin = %{version}
-Requires:      %{name}-plugin-intellilang = %{version}
 Requires:      %{name}-plugin-ant = %{version}
 Requires:      %{name}-plugin-android = %{version}
 Requires:      %{name}-plugin-android-gradle-dsl = %{version}
+Requires:      %{name}-plugin-bytecodeviewer = %{version}
+Requires:      %{name}-plugin-git4idea = %{version}
+Requires:      %{name}-plugin-github = %{version}
+Requires:      %{name}-plugin-gradle = %{version}
+Requires:      %{name}-plugin-gradle-dependencyupdater = %{version}
+Requires:      %{name}-plugin-gradle-java = %{version}
+Requires:      %{name}-plugin-gradle-java-maven = %{version}
+Requires:      %{name}-plugin-grazie = %{version}
+Requires:      %{name}-plugin-groovy = %{version}
+Requires:      %{name}-plugin-intellilang = %{version}
+Requires:      %{name}-plugin-kotlin = %{version}
 Requires:      %{name}-plugin-lombok = %{version}
 
 %description
@@ -42,30 +49,6 @@ Summary:       IntelliJ Java IDE - core files
 Group:         Development
 %description core
 Core files for Jetbrains IntelliJ.
-
-%package plugin-bytecodeviewer
-Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
-Group:         Development
-%description plugin-bytecodeviewer
-ByteCodeViewer plugin for Jetbrains IntelliJ.
-
-%package plugin-groovy
-Summary:       IntelliJ Java IDE - Groovy plugin
-Group:         Development
-%description plugin-groovy
-Groovy plugin for Jetbrains IntelliJ.
-
-%package plugin-kotlin
-Summary:       IntelliJ Java IDE - Kotlin plugin
-Group:         Development
-%description plugin-kotlin
-Kotlin plugin for Jetbrains IntelliJ.
-
-%package plugin-intellilang
-Summary:       IntelliJ Java IDE - Intellilang plugin
-Group:         Development
-%description plugin-intellilang
-IntelliLang plugin for Jetbrains IntelliJ.
 
 %package plugin-ant
 Summary:       IntelliJ Java IDE - Ant plugin
@@ -84,6 +67,72 @@ Summary:       IntelliJ Java IDE - Android Gradle DSL plugin
 Group:         Development
 %description plugin-android-gradle-dsl
 Android Gradle DSL plugin for Jetbrains IntelliJ.
+
+%package plugin-bytecodeviewer
+Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
+Group:         Development
+%description plugin-bytecodeviewer
+ByteCodeViewer plugin for Jetbrains IntelliJ.
+
+%package plugin-git4idea
+Summary:       IntelliJ Java IDE - Git plugin
+Group:         Development
+%description plugin-git4idea
+Git plugin for Jetbrains IntelliJ.
+
+%package plugin-github
+Summary:       IntelliJ Java IDE - Github plugin
+Group:         Development
+%description plugin-github
+Github plugin for Jetbrains IntelliJ.
+
+%package plugin-gradle
+Summary:       IntelliJ Java IDE - Gradle plugin
+Group:         Development
+%description plugin-gradle
+Gradle plugin for Jetbrains IntelliJ.
+
+%package plugin-gradle-dependencyupdater
+Summary:       IntelliJ Java IDE - Gradle Dependency Updater plugin
+Group:         Development
+%description plugin-gradle-dependencyupdater
+Gradle Dependency Updater plugin for Jetbrains IntelliJ.
+
+%package plugin-gradle-java
+Summary:       IntelliJ Java IDE - Gradle Java plugin
+Group:         Development
+%description plugin-gradle-java
+Gradle Java plugin for Jetbrains IntelliJ.
+
+%package plugin-gradle-java-maven
+Summary:       IntelliJ Java IDE - Gradle Java Maven plugin
+Group:         Development
+%description plugin-gradle-java-maven
+Gradle Java Maven plugin for Jetbrains IntelliJ.
+
+%package plugin-grazie
+Summary:       IntelliJ Java IDE - Grazie plugin
+Group:         Development
+%description plugin-grazie
+Grazie plugin for Jetbrains IntelliJ.
+
+%package plugin-groovy
+Summary:       IntelliJ Java IDE - Groovy plugin
+Group:         Development
+%description plugin-groovy
+Groovy plugin for Jetbrains IntelliJ.
+
+%package plugin-intellilang
+Summary:       IntelliJ Java IDE - Intellilang plugin
+Group:         Development
+%description plugin-intellilang
+IntelliLang plugin for Jetbrains IntelliJ.
+
+%package plugin-kotlin
+Summary:       IntelliJ Java IDE - Kotlin plugin
+Group:         Development
+%description plugin-kotlin
+Kotlin plugin for Jetbrains IntelliJ.
 
 %package plugin-lombok
 Summary:       IntelliJ Java IDE - Lombok plugin
@@ -156,18 +205,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 
-%files plugin-bytecodeviewer
-%{_datadir}/%{shortname}/plugins/ByteCodeViewer
-
-%files plugin-groovy
-%{_datadir}/%{shortname}/plugins/Groovy
-
-%files plugin-kotlin
-%{_datadir}/%{shortname}/plugins/Kotlin
-
-%files plugin-intellilang
-%{_datadir}/%{shortname}/plugins/IntelliLang
-
 %files plugin-ant
 %{_datadir}/%{shortname}/plugins/ant
 
@@ -176,6 +213,39 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files plugin-android-gradle-dsl
 %{_datadir}/%{shortname}/plugins/android-gradle-dsl
+
+%files plugin-bytecodeviewer
+%{_datadir}/%{shortname}/plugins/ByteCodeViewer
+
+%files plugin-git4idea
+%{_datadir}/%{shortname}/plugins/git4idea
+
+%files plugin-github
+%{_datadir}/%{shortname}/plugins/github
+
+%files plugin-gradle
+%{_datadir}/%{shortname}/plugins/gradle
+
+%files plugin-gradle-dependencyupdater
+%{_datadir}/%{shortname}/plugins/gradle-dependencyUpdater
+
+%files plugin-gradle-java
+%{_datadir}/%{shortname}/plugins/gradle-java
+
+%files plugin-gradle-java-maven
+%{_datadir}/%{shortname}/plugins/gradle-java-maven
+
+%files plugin-grazie
+%{_datadir}/%{shortname}/plugins/grazie
+
+%files plugin-groovy
+%{_datadir}/%{shortname}/plugins/Groovy
+
+%files plugin-intellilang
+%{_datadir}/%{shortname}/plugins/IntelliLang
+
+%files plugin-kotlin
+%{_datadir}/%{shortname}/plugins/Kotlin
 
 %files plugin-lombok
 %{_datadir}/%{shortname}/plugins/lombok
@@ -194,16 +264,25 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
-%exclude %{_datadir}/%{shortname}/plugins/Groovy
-%exclude %{_datadir}/%{shortname}/plugins/Kotlin
-%exclude %{_datadir}/%{shortname}/plugins/IntelliLang
 %exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
 %exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
+%exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
+%exclude %{_datadir}/%{shortname}/plugins/git4idea
+%exclude %{_datadir}/%{shortname}/plugins/github
+%exclude %{_datadir}/%{shortname}/plugins/gradle
+%exclude %{_datadir}/%{shortname}/plugins/gradle-dependencyUpdater
+%exclude %{_datadir}/%{shortname}/plugins/gradle-java
+%exclude %{_datadir}/%{shortname}/plugins/gradle-java-maven
+%exclude %{_datadir}/%{shortname}/plugins/grazie
+%exclude %{_datadir}/%{shortname}/plugins/Groovy
+%exclude %{_datadir}/%{shortname}/plugins/IntelliLang
+%exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/lombok
 
 %changelog
+* Thu Mar 18 2021 Chris Throup <chris@throup.eu>
+- Split additional plugins into separate subpackages
 * Wed Mar 17 2021 Chris Throup <chris@throup.eu>
 - Split additional plugins into separate subpackages
 * Tue Mar 16 2021 Chris Throup <chris@throup.eu>
