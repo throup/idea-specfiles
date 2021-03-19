@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-community-edition
 Version:       211.6556.6
-Release:       4%{?dist}
+Release:       5%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -28,6 +28,16 @@ Requires:      %{name}-plugin-ant = %{version}
 Requires:      %{name}-plugin-android = %{version}
 Requires:      %{name}-plugin-android-gradle-dsl = %{version}
 Requires:      %{name}-plugin-bytecodeviewer = %{version}
+Requires:      %{name}-plugin-completionmlranking = %{version}
+Requires:      %{name}-plugin-completionmlrankingmodels = %{version}
+Requires:      %{name}-plugin-configurationscript = %{version}
+Requires:      %{name}-plugin-copyright = %{version}
+Requires:      %{name}-plugin-coverage = %{version}
+Requires:      %{name}-plugin-devkit = %{version}
+Requires:      %{name}-plugin-eclipse = %{version}
+Requires:      %{name}-plugin-editorconfig = %{version}
+Requires:      %{name}-plugin-emojipicker = %{version}
+Requires:      %{name}-plugin-externalsystem-dependencyupdater = %{version}
 Requires:      %{name}-plugin-git4idea = %{version}
 Requires:      %{name}-plugin-github = %{version}
 Requires:      %{name}-plugin-gradle = %{version}
@@ -83,6 +93,68 @@ Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
 Group:         Development
 %description plugin-bytecodeviewer
 ByteCodeViewer plugin for Jetbrains IntelliJ.
+
+%package plugin-completionmlranking
+Summary:       IntelliJ Java IDE - Machine Learning Code Completion plugin
+Group:         Development
+%description plugin-completionmlranking
+The plugin improves code completion feature by reordering of elements in the completion popup by ranking more relevant items higher using machine learning.
+
+To enable the feature for your programming language, check settings in Editor | General | Code Completion | "Machine Learning Assistant Code Completion" section.
+
+%package plugin-completionmlrankingmodels
+Summary:       IntelliJ Java IDE - Machine Learning Code Completion Models plugin
+Group:         Development
+%description plugin-completionmlrankingmodels
+The plugin contains experimental models for code completion based on machine learning. These models are used in A/B experiments during EAP.
+
+%package plugin-configurationscript
+Summary:       IntelliJ Java IDE - Configuration Script plugin
+Group:         Development
+%description plugin-configurationscript
+Configuration Script plugin for Jetbrains IntelliJ.
+
+%package plugin-copyright
+Summary:       IntelliJ Java IDE - Copyright plugin
+Group:         Development
+%description plugin-copyright
+Copyright plugin for Jetbrains IntelliJ.
+
+%package plugin-coverage
+Summary:       IntelliJ Java IDE - Coverage plugin
+Group:         Development
+%description plugin-coverage
+Coverage plugin for Jetbrains IntelliJ.
+
+%package plugin-devkit
+Summary:       IntelliJ Java IDE - Devkit plugin
+Group:         Development
+%description plugin-devkit
+Devkit plugin for Jetbrains IntelliJ.
+
+%package plugin-eclipse
+Summary:       IntelliJ Java IDE - Eclipse plugin
+Group:         Development
+%description plugin-eclipse
+Eclipse plugin for Jetbrains IntelliJ.
+
+%package plugin-editorconfig
+Summary:       IntelliJ Java IDE - Editorconfig plugin
+Group:         Development
+%description plugin-editorconfig
+Editorconfig plugin for Jetbrains IntelliJ.
+
+%package plugin-emojipicker
+Summary:       IntelliJ Java IDE - Emojipicker plugin
+Group:         Development
+%description plugin-emojipicker
+Emojipicker plugin for Jetbrains IntelliJ.
+
+%package plugin-externalsystem-dependencyupdater
+Summary:       IntelliJ Java IDE - External System Dependency Updater plugin
+Group:         Development
+%description plugin-externalsystem-dependencyupdater
+External System Dependency Updater plugin for Jetbrains IntelliJ.
 
 %package plugin-git4idea
 Summary:       IntelliJ Java IDE - Git plugin
@@ -287,6 +359,36 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files plugin-bytecodeviewer
 %{_datadir}/%{shortname}/plugins/ByteCodeViewer
 
+%files plugin-completionmlranking
+%{_datadir}/%{shortname}/plugins/completionMlRanking
+
+%files plugin-completionmlrankingmodels
+%{_datadir}/%{shortname}/plugins/completionMlRankingModels
+
+%files plugin-configurationscript
+%{_datadir}/%{shortname}/plugins/configurationScript
+
+%files plugin-copyright
+%{_datadir}/%{shortname}/plugins/copyright
+
+%files plugin-coverage
+%{_datadir}/%{shortname}/plugins/coverage
+
+%files plugin-devkit
+%{_datadir}/%{shortname}/plugins/devkit
+
+%files plugin-eclipse
+%{_datadir}/%{shortname}/plugins/eclipse
+
+%files plugin-editorconfig
+%{_datadir}/%{shortname}/plugins/editorconfig
+
+%files plugin-emojipicker
+%{_datadir}/%{shortname}/plugins/emojipicker
+
+%files plugin-externalsystem-dependencyupdater
+%{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
+
 %files plugin-git4idea
 %{_datadir}/%{shortname}/plugins/git4idea
 
@@ -368,6 +470,16 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/android
 %exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 %exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
+%exclude %{_datadir}/%{shortname}/plugins/completionMlRanking
+%exclude %{_datadir}/%{shortname}/plugins/completionMlRankingModels
+%exclude %{_datadir}/%{shortname}/plugins/configurationScript
+%exclude %{_datadir}/%{shortname}/plugins/copyright
+%exclude %{_datadir}/%{shortname}/plugins/coverage
+%exclude %{_datadir}/%{shortname}/plugins/devkit
+%exclude %{_datadir}/%{shortname}/plugins/eclipse
+%exclude %{_datadir}/%{shortname}/plugins/editorconfig
+%exclude %{_datadir}/%{shortname}/plugins/emojipicker
+%exclude %{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
 %exclude %{_datadir}/%{shortname}/plugins/git4idea
 %exclude %{_datadir}/%{shortname}/plugins/github
 %exclude %{_datadir}/%{shortname}/plugins/gradle

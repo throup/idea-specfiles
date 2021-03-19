@@ -1,0 +1,34 @@
+- completionMlRanking
+- completionMlRankingModels
+- configurationScript
+- copyright
+- coverage
+- devkit
+- eclipse
+- editorconfig
+- emojipicker
+- externalSystem-dependencyUpdater
+featuresTrainer
+filePrediction
+hg4idea
+platform-images
+properties
+properties-resource-bundle-editor
+repository-search
+settings-repository
+sh
+smali
+space
+stats-collector
+stream-debugger
+svn4idea
+tasks
+terminal
+testng
+textmate
+uiDesigner
+vcs-changeReminder
+webp
+xpath
+xslt-debugger
+yaml
