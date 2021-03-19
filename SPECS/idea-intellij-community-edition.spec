@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-community-edition
 Version:       211.6556.6
-Release:       5%{?dist}
+Release:       7%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -59,6 +59,30 @@ Requires:      %{name}-plugin-ml-models-local = %{version}
 Requires:      %{name}-plugin-intellilang = %{version}
 Requires:      %{name}-plugin-kotlin = %{version}
 Requires:      %{name}-plugin-lombok = %{version}
+Requires:      %{name}-plugin-featurestrainer = %{version}
+Requires:      %{name}-plugin-fileprediction = %{version}
+Requires:      %{name}-plugin-hg4idea = %{version}
+Requires:      %{name}-plugin-platform-images = %{version}
+Requires:      %{name}-plugin-properties = %{version}
+Requires:      %{name}-plugin-properties-resource-bundle-editor = %{version}
+Requires:      %{name}-plugin-repository-search = %{version}
+Requires:      %{name}-plugin-settings-repository = %{version}
+Requires:      %{name}-plugin-sh = %{version}
+Requires:      %{name}-plugin-smali = %{version}
+Requires:      %{name}-plugin-space = %{version}
+Requires:      %{name}-plugin-stats-collector = %{version}
+Requires:      %{name}-plugin-stream-debugger = %{version}
+Requires:      %{name}-plugin-svn4idea = %{version}
+Requires:      %{name}-plugin-tasks = %{version}
+Requires:      %{name}-plugin-terminal = %{version}
+Requires:      %{name}-plugin-testng = %{version}
+Requires:      %{name}-plugin-textmate = %{version}
+Requires:      %{name}-plugin-uidesigner = %{version}
+Requires:      %{name}-plugin-vcs-changereminder = %{version}
+Requires:      %{name}-plugin-webp = %{version}
+Requires:      %{name}-plugin-xpath = %{version}
+Requires:      %{name}-plugin-xslt-debugger = %{version}
+Requires:      %{name}-plugin-yaml = %{version}
 
 %description
 IntelliJ Java IDE based upon the Jetbrains Idea platform.
@@ -282,6 +306,150 @@ Group:         Development
 %description plugin-lombok
 Lombok plugin for Jetbrains IntelliJ.
 
+%package plugin-featurestrainer
+Summary:       IntelliJ Java IDE - FeaturesTrainer plugin
+Group:         Development
+%description plugin-featurestrainer
+FeaturesTrainer plugin for Jetbrains IntelliJ.
+
+%package plugin-fileprediction
+Summary:       IntelliJ Java IDE - FilePrediction plugin
+Group:         Development
+%description plugin-fileprediction
+FilePrediction plugin for Jetbrains IntelliJ.
+
+%package plugin-hg4idea
+Summary:       IntelliJ Java IDE - Hg4idea plugin
+Group:         Development
+%description plugin-hg4idea
+Hg4idea plugin for Jetbrains IntelliJ.
+
+%package plugin-platform-images
+Summary:       IntelliJ Java IDE - Platform-images plugin
+Group:         Development
+%description plugin-platform-images
+Platform-images plugin for Jetbrains IntelliJ.
+
+%package plugin-properties
+Summary:       IntelliJ Java IDE - Properties plugin
+Group:         Development
+%description plugin-properties
+Properties plugin for Jetbrains IntelliJ.
+
+%package plugin-properties-resource-bundle-editor
+Summary:       IntelliJ Java IDE - Properties-resource-bundle-editor plugin
+Group:         Development
+%description plugin-properties-resource-bundle-editor
+Properties-resource-bundle-editor plugin for Jetbrains IntelliJ.
+
+%package plugin-repository-search
+Summary:       IntelliJ Java IDE - Repository-search plugin
+Group:         Development
+%description plugin-repository-search
+Repository-search plugin for Jetbrains IntelliJ.
+
+%package plugin-settings-repository
+Summary:       IntelliJ Java IDE - Settings-repository plugin
+Group:         Development
+%description plugin-settings-repository
+Settings-repository plugin for Jetbrains IntelliJ.
+
+%package plugin-sh
+Summary:       IntelliJ Java IDE - Sh plugin
+Group:         Development
+%description plugin-sh
+Sh plugin for Jetbrains IntelliJ.
+
+%package plugin-smali
+Summary:       IntelliJ Java IDE - Smali plugin
+Group:         Development
+%description plugin-smali
+Smali plugin for Jetbrains IntelliJ.
+
+%package plugin-space
+Summary:       IntelliJ Java IDE - Space plugin
+Group:         Development
+%description plugin-space
+Space plugin for Jetbrains IntelliJ.
+
+%package plugin-stats-collector
+Summary:       IntelliJ Java IDE - Stats-collector plugin
+Group:         Development
+%description plugin-stats-collector
+Stats-collector plugin for Jetbrains IntelliJ.
+
+%package plugin-stream-debugger
+Summary:       IntelliJ Java IDE - Stream-debugger plugin
+Group:         Development
+%description plugin-stream-debugger
+Stream-debugger plugin for Jetbrains IntelliJ.
+
+%package plugin-svn4idea
+Summary:       IntelliJ Java IDE - Svn4idea plugin
+Group:         Development
+%description plugin-svn4idea
+Svn4idea plugin for Jetbrains IntelliJ.
+
+%package plugin-tasks
+Summary:       IntelliJ Java IDE - Tasks plugin
+Group:         Development
+%description plugin-tasks
+Tasks plugin for Jetbrains IntelliJ.
+
+%package plugin-terminal
+Summary:       IntelliJ Java IDE - Terminal plugin
+Group:         Development
+%description plugin-terminal
+Terminal plugin for Jetbrains IntelliJ.
+
+%package plugin-testng
+Summary:       IntelliJ Java IDE - Testng plugin
+Group:         Development
+%description plugin-testng
+Testng plugin for Jetbrains IntelliJ.
+
+%package plugin-textmate
+Summary:       IntelliJ Java IDE - Textmate plugin
+Group:         Development
+%description plugin-textmate
+Textmate plugin for Jetbrains IntelliJ.
+
+%package plugin-uidesigner
+Summary:       IntelliJ Java IDE - UiDesigner plugin
+Group:         Development
+%description plugin-uidesigner
+UiDesigner plugin for Jetbrains IntelliJ.
+
+%package plugin-vcs-changereminder
+Summary:       IntelliJ Java IDE - Vcs-changeReminder plugin
+Group:         Development
+%description plugin-vcs-changereminder
+Vcs-changeReminder plugin for Jetbrains IntelliJ.
+
+%package plugin-webp
+Summary:       IntelliJ Java IDE - Webp plugin
+Group:         Development
+%description plugin-webp
+Webp plugin for Jetbrains IntelliJ.
+
+%package plugin-xpath
+Summary:       IntelliJ Java IDE - Xpath plugin
+Group:         Development
+%description plugin-xpath
+Xpath plugin for Jetbrains IntelliJ.
+
+%package plugin-xslt-debugger
+Summary:       IntelliJ Java IDE - XSLT Debugger plugin
+Group:         Development
+%description plugin-xslt-debugger
+XSLT Debugger plugin for Jetbrains IntelliJ.
+
+%package plugin-yaml
+Summary:       IntelliJ Java IDE - YAML plugin
+Group:         Development
+%description plugin-yaml
+YAML plugin for Jetbrains IntelliJ.
+
 %prep
 %setup -qn "%{buildname}-%{version}"
 echo %{version} > build.txt
@@ -452,6 +620,78 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files plugin-lombok
 %{_datadir}/%{shortname}/plugins/lombok
 
+%files plugin-featurestrainer
+%{_datadir}/%{shortname}/plugins/featuresTrainer
+
+%files plugin-fileprediction
+%{_datadir}/%{shortname}/plugins/filePrediction
+
+%files plugin-hg4idea
+%{_datadir}/%{shortname}/plugins/hg4idea
+
+%files plugin-platform-images
+%{_datadir}/%{shortname}/plugins/platform-images
+
+%files plugin-properties
+%{_datadir}/%{shortname}/plugins/properties
+
+%files plugin-properties-resource-bundle-editor
+%{_datadir}/%{shortname}/plugins/properties-resource-bundle-editor
+
+%files plugin-repository-search
+%{_datadir}/%{shortname}/plugins/repository-search
+
+%files plugin-settings-repository
+%{_datadir}/%{shortname}/plugins/settings-repository
+
+%files plugin-sh
+%{_datadir}/%{shortname}/plugins/sh
+
+%files plugin-smali
+%{_datadir}/%{shortname}/plugins/smali
+
+%files plugin-space
+%{_datadir}/%{shortname}/plugins/space
+
+%files plugin-stats-collector
+%{_datadir}/%{shortname}/plugins/stats-collector
+
+%files plugin-stream-debugger
+%{_datadir}/%{shortname}/plugins/stream-debugger
+
+%files plugin-svn4idea
+%{_datadir}/%{shortname}/plugins/svn4idea
+
+%files plugin-tasks
+%{_datadir}/%{shortname}/plugins/tasks
+
+%files plugin-terminal
+%{_datadir}/%{shortname}/plugins/terminal
+
+%files plugin-testng
+%{_datadir}/%{shortname}/plugins/testng
+
+%files plugin-textmate
+%{_datadir}/%{shortname}/plugins/textmate
+
+%files plugin-uidesigner
+%{_datadir}/%{shortname}/plugins/uiDesigner
+
+%files plugin-vcs-changereminder
+%{_datadir}/%{shortname}/plugins/vcs-changeReminder
+
+%files plugin-webp
+%{_datadir}/%{shortname}/plugins/webp
+
+%files plugin-xpath
+%{_datadir}/%{shortname}/plugins/xpath
+
+%files plugin-xslt-debugger
+%{_datadir}/%{shortname}/plugins/xslt-debugger
+
+%files plugin-yaml
+%{_datadir}/%{shortname}/plugins/yaml
+
 %files core
 %license %{_datadir}/%{shortname}/LICENSE.txt
 %license %{_datadir}/%{shortname}/license
@@ -501,8 +741,34 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/IntelliLang
 %exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/lombok
+%exclude %{_datadir}/%{shortname}/plugins/featuresTrainer
+%exclude %{_datadir}/%{shortname}/plugins/filePrediction
+%exclude %{_datadir}/%{shortname}/plugins/hg4idea
+%exclude %{_datadir}/%{shortname}/plugins/platform-images
+%exclude %{_datadir}/%{shortname}/plugins/properties
+%exclude %{_datadir}/%{shortname}/plugins/properties-resource-bundle-editor
+%exclude %{_datadir}/%{shortname}/plugins/repository-search
+%exclude %{_datadir}/%{shortname}/plugins/settings-repository
+%exclude %{_datadir}/%{shortname}/plugins/sh
+%exclude %{_datadir}/%{shortname}/plugins/smali
+%exclude %{_datadir}/%{shortname}/plugins/space
+%exclude %{_datadir}/%{shortname}/plugins/stats-collector
+%exclude %{_datadir}/%{shortname}/plugins/stream-debugger
+%exclude %{_datadir}/%{shortname}/plugins/svn4idea
+%exclude %{_datadir}/%{shortname}/plugins/tasks
+%exclude %{_datadir}/%{shortname}/plugins/terminal
+%exclude %{_datadir}/%{shortname}/plugins/testng
+%exclude %{_datadir}/%{shortname}/plugins/textmate
+%exclude %{_datadir}/%{shortname}/plugins/uiDesigner
+%exclude %{_datadir}/%{shortname}/plugins/vcs-changeReminder
+%exclude %{_datadir}/%{shortname}/plugins/webp
+%exclude %{_datadir}/%{shortname}/plugins/xpath
+%exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
+%exclude %{_datadir}/%{shortname}/plugins/yaml
 
 %changelog
+* Fri Mar 19 2021 Chris Throup <chris@throup.eu>
+- Split remaining plugins into separate subpackages
 * Thu Mar 18 2021 Chris Throup <chris@throup.eu>
 - Split additional plugins into separate subpackages
 * Wed Mar 17 2021 Chris Throup <chris@throup.eu>
