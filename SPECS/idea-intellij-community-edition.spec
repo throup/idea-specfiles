@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-community-edition
 Version:       211.6556.6
-Release:       7%{?dist}
+Release:       8%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -97,6 +97,7 @@ Core files for Jetbrains IntelliJ.
 %package plugin-ant
 Summary:       IntelliJ Java IDE - Ant plugin
 Group:         Development
+Requires:      mvn(ant:ant)
 %description plugin-ant
 Ant plugin for Jetbrains IntelliJ.
 
@@ -482,6 +483,13 @@ cat >%{name} <<EOF
 %{_datadir}/%{shortname}/bin/%{shortname}.sh $@
 EOF
 
+# Remove unwanted files
+rm out/idea-ce/dist.unix/Install-Linux-tar.txt
+
+# Removing bundled libs which are also provided by Fedora
+rm -r out/idea-ce/dist.all/lib/ant
+ln -s ../../ant out/idea-ce/dist.all/lib/
+
 %install
 mkdir -p %{buildroot}%{_bindir} \
          %{buildroot}%{_datadir}/%{shortname}
@@ -503,9 +511,6 @@ install -p -m0755 %{name} \
 desktop-file-install --dir %{buildroot}%{_datadir}/applications \
                      %{name}.desktop
 
-# Remove unwanted files
-rm %{buildroot}%{_datadir}/%{shortname}/Install-Linux-tar.txt
-
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
@@ -516,6 +521,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files
 
 %files plugin-ant
+%{_datadir}/%{shortname}/lib/ant
 %{_datadir}/%{shortname}/plugins/ant
 
 %files plugin-android
@@ -706,6 +712,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%exclude %{_datadir}/%{shortname}/lib/ant
 %exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
 %exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
