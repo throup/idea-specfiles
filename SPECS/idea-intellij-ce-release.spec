@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-ce-release
 Version:       203.7717.56
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
 
 Group:         Development
