@@ -8,7 +8,7 @@
 
 Name:          idea-intellij-community-edition
 Version:       211.6556.6
-Release:       8%{?dist}
+Release:       9%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -21,8 +21,8 @@ Source1:       https://github.com/JetBrains/android/archive/%{shortname}/%{versi
 BuildRequires: ant
 BuildRequires: desktop-file-utils
 BuildRequires: java-sdk-11
-Requires:      java >= 1:11
-Requires:      jre >= 1:11
+Requires:      java-11
+Requires:      jre-11
 Requires:      %{name}-core = %{version}
 Requires:      %{name}-plugin-ant = %{version}
 Requires:      %{name}-plugin-android = %{version}
