@@ -7,8 +7,8 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-community-edition
-Version:       203.7717.56
-Release:       2%{?dist}
+Version:       211.6693.14
+Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -25,9 +25,11 @@ Requires:      java-11
 Requires:      jre-11
 Requires:      %{name}-core = %{version}
 Requires:      %{name}-plugin-android = %{version}
+Requires:      %{name}-plugin-android-gradle-dsl = %{version}
 Requires:      %{name}-plugin-ant = %{version}
 Requires:      %{name}-plugin-bytecodeviewer = %{version}
 Requires:      %{name}-plugin-completionmlranking = %{version}
+Requires:      %{name}-plugin-completionmlrankingmodels = %{version}
 Requires:      %{name}-plugin-configurationscript = %{version}
 Requires:      %{name}-plugin-copyright = %{version}
 Requires:      %{name}-plugin-coverage = %{version}
@@ -42,8 +44,6 @@ Requires:      %{name}-plugin-git4idea = %{version}
 Requires:      %{name}-plugin-github = %{version}
 Requires:      %{name}-plugin-gradle = %{version}
 Requires:      %{name}-plugin-gradle-dependencyupdater = %{version}
-Requires:      %{name}-plugin-gradle-dsl-impl = %{version}
-Requires:      %{name}-plugin-gradle-dsl-kotlin-impl = %{version}
 Requires:      %{name}-plugin-gradle-java = %{version}
 Requires:      %{name}-plugin-gradle-java-maven = %{version}
 Requires:      %{name}-plugin-grazie = %{version}
@@ -61,6 +61,7 @@ Requires:      %{name}-plugin-lombok = %{version}
 Requires:      %{name}-plugin-markdown = %{version}
 Requires:      %{name}-plugin-maven = %{version}
 Requires:      %{name}-plugin-maven-model = %{version}
+Requires:      %{name}-plugin-ml-models-local = %{version}
 Requires:      %{name}-plugin-platform-images = %{version}
 Requires:      %{name}-plugin-properties = %{version}
 Requires:      %{name}-plugin-properties-resource-bundle-editor = %{version}
@@ -68,6 +69,8 @@ Requires:      %{name}-plugin-repository-search = %{version}
 Requires:      %{name}-plugin-settings-repository = %{version}
 Requires:      %{name}-plugin-sh = %{version}
 Requires:      %{name}-plugin-smali = %{version}
+Requires:      %{name}-plugin-space = %{version}
+Requires:      %{name}-plugin-stats-collector = %{version}
 Requires:      %{name}-plugin-stream-debugger = %{version}
 Requires:      %{name}-plugin-svn4idea = %{version}
 Requires:      %{name}-plugin-tasks = %{version}
@@ -104,6 +107,12 @@ Group:         Development
 %description plugin-android
 Android plugin for Jetbrains IntelliJ.
 
+%package plugin-android-gradle-dsl
+Summary:       IntelliJ Java IDE - Android Gradle DSL plugin
+Group:         Development
+%description plugin-android-gradle-dsl
+Android Gradle DSL plugin for Jetbrains IntelliJ.
+
 %package plugin-bytecodeviewer
 Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
 Group:         Development
@@ -117,6 +126,12 @@ Group:         Development
 The plugin improves code completion feature by reordering of elements in the completion popup by ranking more relevant items higher using machine learning.
 
 To enable the feature for your programming language, check settings in Editor | General | Code Completion | "Machine Learning Assistant Code Completion" section.
+
+%package plugin-completionmlrankingmodels
+Summary:       IntelliJ Java IDE - Machine Learning Code Completion Models plugin
+Group:         Development
+%description plugin-completionmlrankingmodels
+The plugin contains experimental models for code completion based on machine learning. These models are used in A/B experiments during EAP.
 
 %package plugin-configurationscript
 Summary:       IntelliJ Java IDE - Configuration Script plugin
@@ -189,18 +204,6 @@ Summary:       IntelliJ Java IDE - Gradle Dependency Updater plugin
 Group:         Development
 %description plugin-gradle-dependencyupdater
 Gradle Dependency Updater plugin for Jetbrains IntelliJ.
-
-%package plugin-gradle-dsl-impl
-Summary:       IntelliJ Java IDE - Gradle DSL Impl plugin
-Group:         Development
-%description plugin-gradle-dsl-impl
-Gradle DSL Impl plugin for Jetbrains IntelliJ.
-
-%package plugin-gradle-dsl-kotlin-impl
-Summary:       IntelliJ Java IDE - Gradle DSL Kotlin Impl plugin
-Group:         Development
-%description plugin-gradle-dsl-kotlin-impl
-Gradle DSL Kotlin Impl plugin for Jetbrains IntelliJ.
 
 %package plugin-gradle-java
 Summary:       IntelliJ Java IDE - Gradle Java plugin
@@ -280,6 +283,12 @@ Group:         Development
 %description plugin-maven-model
 Maven Model plugin for Jetbrains IntelliJ.
 
+%package plugin-ml-models-local
+Summary:       IntelliJ Java IDE - Machine Learning Local Models plugin
+Group:         Development
+%description plugin-ml-models-local
+Machine Learning Local Models plugin for Jetbrains IntelliJ.
+
 %package plugin-intellilang
 Summary:       IntelliJ Java IDE - Intellilang plugin
 Group:         Development
@@ -357,6 +366,18 @@ Summary:       IntelliJ Java IDE - Smali plugin
 Group:         Development
 %description plugin-smali
 Smali plugin for Jetbrains IntelliJ.
+
+%package plugin-space
+Summary:       IntelliJ Java IDE - Space plugin
+Group:         Development
+%description plugin-space
+Space plugin for Jetbrains IntelliJ.
+
+%package plugin-stats-collector
+Summary:       IntelliJ Java IDE - Stats-collector plugin
+Group:         Development
+%description plugin-stats-collector
+Stats-collector plugin for Jetbrains IntelliJ.
 
 %package plugin-stream-debugger
 Summary:       IntelliJ Java IDE - Stream-debugger plugin
@@ -506,11 +527,17 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files plugin-android
 %{_datadir}/%{shortname}/plugins/android
 
+%files plugin-android-gradle-dsl
+%{_datadir}/%{shortname}/plugins/android-gradle-dsl
+
 %files plugin-bytecodeviewer
 %{_datadir}/%{shortname}/plugins/ByteCodeViewer
 
 %files plugin-completionmlranking
 %{_datadir}/%{shortname}/plugins/completionMlRanking
+
+%files plugin-completionmlrankingmodels
+%{_datadir}/%{shortname}/plugins/completionMlRankingModels
 
 %files plugin-configurationscript
 %{_datadir}/%{shortname}/plugins/configurationScript
@@ -547,12 +574,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files plugin-gradle-dependencyupdater
 %{_datadir}/%{shortname}/plugins/gradle-dependencyUpdater
-
-%files plugin-gradle-dsl-impl
-%{_datadir}/%{shortname}/plugins/gradle-dsl-impl
-
-%files plugin-gradle-dsl-kotlin-impl
-%{_datadir}/%{shortname}/plugins/gradle-dsl-kotlin-impl
 
 %files plugin-gradle-java
 %{_datadir}/%{shortname}/plugins/gradle-java
@@ -595,6 +616,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files plugin-maven-model
 %{_datadir}/%{shortname}/plugins/maven-model
 
+%files plugin-ml-models-local
+%{_datadir}/%{shortname}/plugins/ml-models-local
+
 %files plugin-intellilang
 %{_datadir}/%{shortname}/plugins/IntelliLang
 
@@ -633,6 +657,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files plugin-smali
 %{_datadir}/%{shortname}/plugins/smali
+
+%files plugin-space
+%{_datadir}/%{shortname}/plugins/space
+
+%files plugin-stats-collector
+%{_datadir}/%{shortname}/plugins/stats-collector
 
 %files plugin-stream-debugger
 %{_datadir}/%{shortname}/plugins/stream-debugger
@@ -678,7 +708,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/lib
 %{_datadir}/%{shortname}/plugins
 %{_datadir}/%{shortname}/redist
+%{_datadir}/%{shortname}/brokenPlugins.db
 %{_datadir}/%{shortname}/build.txt
+%{_datadir}/%{shortname}/classpath.txt
 %{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
@@ -687,8 +719,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/lib/ant
 %exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
+%exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 %exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
 %exclude %{_datadir}/%{shortname}/plugins/completionMlRanking
+%exclude %{_datadir}/%{shortname}/plugins/completionMlRankingModels
 %exclude %{_datadir}/%{shortname}/plugins/configurationScript
 %exclude %{_datadir}/%{shortname}/plugins/copyright
 %exclude %{_datadir}/%{shortname}/plugins/coverage
@@ -701,8 +735,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/github
 %exclude %{_datadir}/%{shortname}/plugins/gradle
 %exclude %{_datadir}/%{shortname}/plugins/gradle-dependencyUpdater
-%exclude %{_datadir}/%{shortname}/plugins/gradle-dsl-impl
-%exclude %{_datadir}/%{shortname}/plugins/gradle-dsl-kotlin-impl
 %exclude %{_datadir}/%{shortname}/plugins/gradle-java
 %exclude %{_datadir}/%{shortname}/plugins/gradle-java-maven
 %exclude %{_datadir}/%{shortname}/plugins/grazie
@@ -716,6 +748,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/markdown
 %exclude %{_datadir}/%{shortname}/plugins/maven
 %exclude %{_datadir}/%{shortname}/plugins/maven-model
+%exclude %{_datadir}/%{shortname}/plugins/ml-models-local
 %exclude %{_datadir}/%{shortname}/plugins/IntelliLang
 %exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/lombok
@@ -729,6 +762,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/settings-repository
 %exclude %{_datadir}/%{shortname}/plugins/sh
 %exclude %{_datadir}/%{shortname}/plugins/smali
+%exclude %{_datadir}/%{shortname}/plugins/space
+%exclude %{_datadir}/%{shortname}/plugins/stats-collector
 %exclude %{_datadir}/%{shortname}/plugins/stream-debugger
 %exclude %{_datadir}/%{shortname}/plugins/svn4idea
 %exclude %{_datadir}/%{shortname}/plugins/tasks
@@ -743,6 +778,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
 %changelog
+* Fri Mar 26 2021 Chris Throup <chris@throup.eu>
+- Improvements for eap version packaging
 * Thu Mar 25 2021 Chris Throup <chris@throup.eu>
 - Improvements for release version packaging
 * Fri Mar 19 2021 Chris Throup <chris@throup.eu>
