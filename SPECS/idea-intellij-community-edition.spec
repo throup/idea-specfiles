@@ -72,7 +72,6 @@ Requires:      %{name}-plugin-repository-search = %{version}
 Requires:      %{name}-plugin-settings-repository = %{version}
 Requires:      %{name}-plugin-sh = %{version}
 Requires:      %{name}-plugin-smali = %{version}
-Requires:      %{name}-plugin-space = %{version}
 Requires:      %{name}-plugin-stats-collector = %{version}
 Requires:      %{name}-plugin-stream-debugger = %{version}
 Requires:      %{name}-plugin-svn4idea = %{version}
@@ -370,12 +369,6 @@ Group:         Development
 %description plugin-smali
 Smali plugin for Jetbrains IntelliJ.
 
-%package plugin-space
-Summary:       IntelliJ Java IDE - Space plugin
-Group:         Development
-%description plugin-space
-Space plugin for Jetbrains IntelliJ.
-
 %package plugin-stats-collector
 Summary:       IntelliJ Java IDE - Stats-collector plugin
 Group:         Development
@@ -662,9 +655,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files plugin-smali
 %{_datadir}/%{shortname}/plugins/smali
 
-%files plugin-space
-%{_datadir}/%{shortname}/plugins/space
-
 %files plugin-stats-collector
 %{_datadir}/%{shortname}/plugins/stats-collector
 
@@ -766,7 +756,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/settings-repository
 %exclude %{_datadir}/%{shortname}/plugins/sh
 %exclude %{_datadir}/%{shortname}/plugins/smali
-%exclude %{_datadir}/%{shortname}/plugins/space
 %exclude %{_datadir}/%{shortname}/plugins/stats-collector
 %exclude %{_datadir}/%{shortname}/plugins/stream-debugger
 %exclude %{_datadir}/%{shortname}/plugins/svn4idea
