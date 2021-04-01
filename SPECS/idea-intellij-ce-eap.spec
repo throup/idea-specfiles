@@ -7,7 +7,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce-eap
-Version:       211.6693.14
+Version:       211.6693.65
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition - EAP version
 

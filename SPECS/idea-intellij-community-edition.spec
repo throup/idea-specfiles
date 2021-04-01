@@ -7,8 +7,8 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-community-edition
-Version:       211.6693.14
-Release:       2%{?dist}
+Version:       211.6693.65
+Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 Group:         Development
@@ -32,7 +32,6 @@ Requires:      %{name}-plugin-android-gradle-dsl = %{version}
 Requires:      %{name}-plugin-ant = %{version}
 Requires:      %{name}-plugin-bytecodeviewer = %{version}
 Requires:      %{name}-plugin-completionmlranking = %{version}
-Requires:      %{name}-plugin-completionmlrankingmodels = %{version}
 Requires:      %{name}-plugin-configurationscript = %{version}
 Requires:      %{name}-plugin-copyright = %{version}
 Requires:      %{name}-plugin-coverage = %{version}
@@ -64,7 +63,6 @@ Requires:      %{name}-plugin-lombok = %{version}
 Requires:      %{name}-plugin-markdown = %{version}
 Requires:      %{name}-plugin-maven = %{version}
 Requires:      %{name}-plugin-maven-model = %{version}
-Requires:      %{name}-plugin-ml-models-local = %{version}
 Requires:      %{name}-plugin-platform-images = %{version}
 Requires:      %{name}-plugin-properties = %{version}
 Requires:      %{name}-plugin-properties-resource-bundle-editor = %{version}
@@ -72,7 +70,6 @@ Requires:      %{name}-plugin-repository-search = %{version}
 Requires:      %{name}-plugin-settings-repository = %{version}
 Requires:      %{name}-plugin-sh = %{version}
 Requires:      %{name}-plugin-smali = %{version}
-Requires:      %{name}-plugin-stats-collector = %{version}
 Requires:      %{name}-plugin-stream-debugger = %{version}
 Requires:      %{name}-plugin-svn4idea = %{version}
 Requires:      %{name}-plugin-tasks = %{version}
@@ -128,12 +125,6 @@ Group:         Development
 The plugin improves code completion feature by reordering of elements in the completion popup by ranking more relevant items higher using machine learning.
 
 To enable the feature for your programming language, check settings in Editor | General | Code Completion | "Machine Learning Assistant Code Completion" section.
-
-%package plugin-completionmlrankingmodels
-Summary:       IntelliJ Java IDE - Machine Learning Code Completion Models plugin
-Group:         Development
-%description plugin-completionmlrankingmodels
-The plugin contains experimental models for code completion based on machine learning. These models are used in A/B experiments during EAP.
 
 %package plugin-configurationscript
 Summary:       IntelliJ Java IDE - Configuration Script plugin
@@ -285,12 +276,6 @@ Group:         Development
 %description plugin-maven-model
 Maven Model plugin for Jetbrains IntelliJ.
 
-%package plugin-ml-models-local
-Summary:       IntelliJ Java IDE - Machine Learning Local Models plugin
-Group:         Development
-%description plugin-ml-models-local
-Machine Learning Local Models plugin for Jetbrains IntelliJ.
-
 %package plugin-intellilang
 Summary:       IntelliJ Java IDE - Intellilang plugin
 Group:         Development
@@ -368,12 +353,6 @@ Summary:       IntelliJ Java IDE - Smali plugin
 Group:         Development
 %description plugin-smali
 Smali plugin for Jetbrains IntelliJ.
-
-%package plugin-stats-collector
-Summary:       IntelliJ Java IDE - Stats-collector plugin
-Group:         Development
-%description plugin-stats-collector
-Stats-collector plugin for Jetbrains IntelliJ.
 
 %package plugin-stream-debugger
 Summary:       IntelliJ Java IDE - Stream-debugger plugin
@@ -533,9 +512,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files plugin-completionmlranking
 %{_datadir}/%{shortname}/plugins/completionMlRanking
 
-%files plugin-completionmlrankingmodels
-%{_datadir}/%{shortname}/plugins/completionMlRankingModels
-
 %files plugin-configurationscript
 %{_datadir}/%{shortname}/plugins/configurationScript
 
@@ -607,14 +583,15 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files plugin-maven
 %{_datadir}/%{shortname}/plugins/maven
-%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native
 %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/linux64
+%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/windows32
+%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/windows64
+%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/osx
+%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/freebsd32
+%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/freebsd64
 
 %files plugin-maven-model
 %{_datadir}/%{shortname}/plugins/maven-model
-
-%files plugin-ml-models-local
-%{_datadir}/%{shortname}/plugins/ml-models-local
 
 %files plugin-intellilang
 %{_datadir}/%{shortname}/plugins/IntelliLang
@@ -654,9 +631,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files plugin-smali
 %{_datadir}/%{shortname}/plugins/smali
-
-%files plugin-stats-collector
-%{_datadir}/%{shortname}/plugins/stats-collector
 
 %files plugin-stream-debugger
 %{_datadir}/%{shortname}/plugins/stream-debugger
@@ -708,15 +682,16 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux
-%{_datadir}/%{shortname}/lib/pty4j-native/linux/x86-64
+%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
+%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
+%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/mips64el
+%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/ppc64le
 %exclude %{_datadir}/%{shortname}/lib/ant
 %exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
 %exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 %exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
 %exclude %{_datadir}/%{shortname}/plugins/completionMlRanking
-%exclude %{_datadir}/%{shortname}/plugins/completionMlRankingModels
 %exclude %{_datadir}/%{shortname}/plugins/configurationScript
 %exclude %{_datadir}/%{shortname}/plugins/copyright
 %exclude %{_datadir}/%{shortname}/plugins/coverage
@@ -742,7 +717,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/markdown
 %exclude %{_datadir}/%{shortname}/plugins/maven
 %exclude %{_datadir}/%{shortname}/plugins/maven-model
-%exclude %{_datadir}/%{shortname}/plugins/ml-models-local
 %exclude %{_datadir}/%{shortname}/plugins/IntelliLang
 %exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/lombok
@@ -756,7 +730,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/settings-repository
 %exclude %{_datadir}/%{shortname}/plugins/sh
 %exclude %{_datadir}/%{shortname}/plugins/smali
-%exclude %{_datadir}/%{shortname}/plugins/stats-collector
 %exclude %{_datadir}/%{shortname}/plugins/stream-debugger
 %exclude %{_datadir}/%{shortname}/plugins/svn4idea
 %exclude %{_datadir}/%{shortname}/plugins/tasks
