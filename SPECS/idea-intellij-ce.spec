@@ -1,15 +1,20 @@
-%define vendor    jetbrains
-%define fullname  IntelliJ Idea
-%define shortname idea
-%define buildname intellij-community-%{shortname}
+%define vendor     jetbrains
+%define fullname   IntelliJ Idea
+%define shortname  idea
+%define buildname  intellij-community-%{shortname}
+%define uniquename io.github.jetbrains.intellij_idea
 
 %global __python %{__python3}
 %define debug_package %{nil}
 
-Name:          idea-intellij-community-edition
+Name:          idea-intellij-ce
 Version:       211.6693.65
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
+
+# Original package name was a little long...
+Provides:      idea-intellij-community-edition = %{version}
+Obsoletes:     idea-intellij-community-edition < %{version}
 
 Group:         Development
 License:       Apache License
@@ -22,6 +27,7 @@ Source1:       https://github.com/JetBrains/android/archive/%{shortname}/%{versi
 Source2:       https://raw.githubusercontent.com/JetBrains/intellij-community/d8314c735234a95228e992df2ae3a12a417ccad0/.idea/libraries/Log4J.xml
 
 BuildRequires: ant
+BuildRequires: appstream
 BuildRequires: desktop-file-utils
 BuildRequires: java-sdk-11
 Requires:      java-11
@@ -96,6 +102,7 @@ Core files for Jetbrains IntelliJ.
 %package plugin-ant
 Summary:       IntelliJ Java IDE - Ant plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 Requires:      mvn(ant:ant)
 %description plugin-ant
 Ant plugin for Jetbrains IntelliJ.
@@ -103,24 +110,28 @@ Ant plugin for Jetbrains IntelliJ.
 %package plugin-android
 Summary:       IntelliJ Java IDE - Android plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-android
 Android plugin for Jetbrains IntelliJ.
 
 %package plugin-android-gradle-dsl
 Summary:       IntelliJ Java IDE - Android Gradle DSL plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-android-gradle-dsl
 Android Gradle DSL plugin for Jetbrains IntelliJ.
 
 %package plugin-bytecodeviewer
 Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-bytecodeviewer
 ByteCodeViewer plugin for Jetbrains IntelliJ.
 
 %package plugin-completionmlranking
 Summary:       IntelliJ Java IDE - Machine Learning Code Completion plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-completionmlranking
 The plugin improves code completion feature by reordering of elements in the completion popup by ranking more relevant items higher using machine learning.
 
@@ -129,302 +140,360 @@ To enable the feature for your programming language, check settings in Editor | 
 %package plugin-configurationscript
 Summary:       IntelliJ Java IDE - Configuration Script plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-configurationscript
 Configuration Script plugin for Jetbrains IntelliJ.
 
 %package plugin-copyright
 Summary:       IntelliJ Java IDE - Copyright plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-copyright
 Copyright plugin for Jetbrains IntelliJ.
 
 %package plugin-coverage
 Summary:       IntelliJ Java IDE - Coverage plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-coverage
 Coverage plugin for Jetbrains IntelliJ.
 
 %package plugin-devkit
 Summary:       IntelliJ Java IDE - Devkit plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-devkit
 Devkit plugin for Jetbrains IntelliJ.
 
 %package plugin-eclipse
 Summary:       IntelliJ Java IDE - Eclipse plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-eclipse
 Eclipse plugin for Jetbrains IntelliJ.
 
 %package plugin-editorconfig
 Summary:       IntelliJ Java IDE - Editorconfig plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-editorconfig
 Editorconfig plugin for Jetbrains IntelliJ.
 
 %package plugin-emojipicker
 Summary:       IntelliJ Java IDE - Emojipicker plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-emojipicker
 Emojipicker plugin for Jetbrains IntelliJ.
 
 %package plugin-externalsystem-dependencyupdater
 Summary:       IntelliJ Java IDE - External System Dependency Updater plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-externalsystem-dependencyupdater
 External System Dependency Updater plugin for Jetbrains IntelliJ.
 
 %package plugin-git4idea
 Summary:       IntelliJ Java IDE - Git plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-git4idea
 Git plugin for Jetbrains IntelliJ.
 
 %package plugin-github
 Summary:       IntelliJ Java IDE - Github plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-github
 Github plugin for Jetbrains IntelliJ.
 
 %package plugin-gradle
 Summary:       IntelliJ Java IDE - Gradle plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-gradle
 Gradle plugin for Jetbrains IntelliJ.
 
 %package plugin-gradle-dependencyupdater
 Summary:       IntelliJ Java IDE - Gradle Dependency Updater plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-gradle-dependencyupdater
 Gradle Dependency Updater plugin for Jetbrains IntelliJ.
 
 %package plugin-gradle-java
 Summary:       IntelliJ Java IDE - Gradle Java plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-gradle-java
 Gradle Java plugin for Jetbrains IntelliJ.
 
 %package plugin-gradle-java-maven
 Summary:       IntelliJ Java IDE - Gradle Java Maven plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-gradle-java-maven
 Gradle Java Maven plugin for Jetbrains IntelliJ.
 
 %package plugin-grazie
 Summary:       IntelliJ Java IDE - Grazie plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-grazie
 Grazie plugin for Jetbrains IntelliJ.
 
 %package plugin-groovy
 Summary:       IntelliJ Java IDE - Groovy plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-groovy
 Groovy plugin for Jetbrains IntelliJ.
 
 %package plugin-java
 Summary:       IntelliJ Java IDE - Java plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-java
 Java plugin for Jetbrains IntelliJ.
 
 %package plugin-java-decompiler
 Summary:       IntelliJ Java IDE - Java Decompiler plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-java-decompiler
 Java Decompiler plugin for Jetbrains IntelliJ.
 
 %package plugin-javafx
 Summary:       IntelliJ Java IDE - JavaFX plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-javafx
 JavaFX plugin for Jetbrains IntelliJ.
 
 %package plugin-java-i18n
 Summary:       IntelliJ Java IDE - Java I18n plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-java-i18n
 Java I18n plugin for Jetbrains IntelliJ.
 
 %package plugin-java-ide-customization
 Summary:       IntelliJ Java IDE - Java IDE Customization plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-java-ide-customization
 Java IDE Customization plugin for Jetbrains IntelliJ.
 
 %package plugin-junit
 Summary:       IntelliJ Java IDE - Junit plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-junit
 Junit plugin for Jetbrains IntelliJ.
 
 %package plugin-markdown
 Summary:       IntelliJ Java IDE - Markdown plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-markdown
 Markdown plugin for Jetbrains IntelliJ.
 
 %package plugin-maven
 Summary:       IntelliJ Java IDE - Maven plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-maven
 Maven plugin for Jetbrains IntelliJ.
 
 %package plugin-maven-model
 Summary:       IntelliJ Java IDE - Maven Model plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-maven-model
 Maven Model plugin for Jetbrains IntelliJ.
 
 %package plugin-intellilang
 Summary:       IntelliJ Java IDE - Intellilang plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-intellilang
 IntelliLang plugin for Jetbrains IntelliJ.
 
 %package plugin-kotlin
 Summary:       IntelliJ Java IDE - Kotlin plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-kotlin
 Kotlin plugin for Jetbrains IntelliJ.
 
 %package plugin-lombok
 Summary:       IntelliJ Java IDE - Lombok plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-lombok
 Lombok plugin for Jetbrains IntelliJ.
 
 %package plugin-featurestrainer
 Summary:       IntelliJ Java IDE - FeaturesTrainer plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-featurestrainer
 FeaturesTrainer plugin for Jetbrains IntelliJ.
 
 %package plugin-fileprediction
 Summary:       IntelliJ Java IDE - FilePrediction plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-fileprediction
 FilePrediction plugin for Jetbrains IntelliJ.
 
 %package plugin-hg4idea
 Summary:       IntelliJ Java IDE - Hg4idea plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-hg4idea
 Hg4idea plugin for Jetbrains IntelliJ.
 
 %package plugin-platform-images
 Summary:       IntelliJ Java IDE - Platform-images plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-platform-images
 Platform-images plugin for Jetbrains IntelliJ.
 
 %package plugin-properties
 Summary:       IntelliJ Java IDE - Properties plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-properties
 Properties plugin for Jetbrains IntelliJ.
 
 %package plugin-properties-resource-bundle-editor
 Summary:       IntelliJ Java IDE - Properties-resource-bundle-editor plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-properties-resource-bundle-editor
 Properties-resource-bundle-editor plugin for Jetbrains IntelliJ.
 
 %package plugin-repository-search
 Summary:       IntelliJ Java IDE - Repository-search plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-repository-search
 Repository-search plugin for Jetbrains IntelliJ.
 
 %package plugin-settings-repository
 Summary:       IntelliJ Java IDE - Settings-repository plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-settings-repository
 Settings-repository plugin for Jetbrains IntelliJ.
 
 %package plugin-sh
 Summary:       IntelliJ Java IDE - Sh plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-sh
 Sh plugin for Jetbrains IntelliJ.
 
 %package plugin-smali
 Summary:       IntelliJ Java IDE - Smali plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-smali
 Smali plugin for Jetbrains IntelliJ.
 
 %package plugin-stream-debugger
 Summary:       IntelliJ Java IDE - Stream-debugger plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-stream-debugger
 Stream-debugger plugin for Jetbrains IntelliJ.
 
 %package plugin-svn4idea
 Summary:       IntelliJ Java IDE - Svn4idea plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-svn4idea
 Svn4idea plugin for Jetbrains IntelliJ.
 
 %package plugin-tasks
 Summary:       IntelliJ Java IDE - Tasks plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-tasks
 Tasks plugin for Jetbrains IntelliJ.
 
 %package plugin-terminal
 Summary:       IntelliJ Java IDE - Terminal plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-terminal
 Terminal plugin for Jetbrains IntelliJ.
 
 %package plugin-testng
 Summary:       IntelliJ Java IDE - Testng plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-testng
 Testng plugin for Jetbrains IntelliJ.
 
 %package plugin-textmate
 Summary:       IntelliJ Java IDE - Textmate plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-textmate
 Textmate plugin for Jetbrains IntelliJ.
 
 %package plugin-uidesigner
 Summary:       IntelliJ Java IDE - UiDesigner plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-uidesigner
 UiDesigner plugin for Jetbrains IntelliJ.
 
 %package plugin-vcs-changereminder
 Summary:       IntelliJ Java IDE - Vcs-changeReminder plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-vcs-changereminder
 Vcs-changeReminder plugin for Jetbrains IntelliJ.
 
 %package plugin-webp
 Summary:       IntelliJ Java IDE - Webp plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-webp
 Webp plugin for Jetbrains IntelliJ.
 
 %package plugin-xpath
 Summary:       IntelliJ Java IDE - Xpath plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-xpath
 Xpath plugin for Jetbrains IntelliJ.
 
 %package plugin-xslt-debugger
 Summary:       IntelliJ Java IDE - XSLT Debugger plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-xslt-debugger
 XSLT Debugger plugin for Jetbrains IntelliJ.
 
 %package plugin-yaml
 Summary:       IntelliJ Java IDE - YAML plugin
 Group:         Development
+Requires:      %{name}-core = %{version}
 %description plugin-yaml
 YAML plugin for Jetbrains IntelliJ.
+
+%package eap
+Summary:       IntelliJ Java IDE - Community Edition - EAP version
+Requires:      %{name} = %{version}
+%description eap
+IntelliJ Java IDE based upon the Jetbrains Idea platform.
+Meta-package to track the current EAP version
+
 
 %prep
 %setup -qn "%{buildname}-%{version}"
@@ -439,19 +508,44 @@ export JAVA_HOME=$(rpm -ql $(rpm -q --whatprovides java-11-headless) | grep "jre
 export ANT_OPTS="$ANT_OPTS -Dintellij.build.target.os=linux"
 ant -Dintellij.build.target.os=linux
 
-cat >%{name}.desktop <<EOF
-[Desktop Entry]
-Encoding=UTF-8
-Name=%{fullname}
-GenericName=%{fullname}
-Comment=Starts %{fullname}
-Exec="%{_datadir}/%{shortname}/bin/%{shortname}.sh" %f
-Icon=%{_datadir}/%{shortname}/bin/%{shortname}.png
-Terminal=false
-Type=Application
-Categories=GTK;GNOME;Development;
-StartupWMClass=%{vendor}-%{shortname}-ce
+cat > %{uniquename}.metainfo.xml <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>%{uniquename}</id>
+
+    <name>IntelliJ IDEA</name>
+    <summary>IntelliJ Java IDE based upon the Jetbrains Idea platform.</summary>
+
+    <metadata_license>FSFAP</metadata_license>
+    <project_license>Apache-2.0</project_license>
+
+    <description>
+        <p>
+            IntelliJ Java IDE based upon the Jetbrains Idea platform.
+        </p>
+    </description>
+
+    <launchable type="desktop-id">%{uniquename}.desktop</launchable>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://www.jetbrains.com/idea/img/screenshots/idea_overview_5_1.png</image>
+        </screenshot>
+    </screenshots>
+
+    <icon type="stock">%{uniquename}</icon>
+
+    <categories>
+        <category>Development</category>
+        <category>IDE</category>
+    </categories>
+
+    <provides>
+        <binary>%{name}</binary>
+    </provides>
+</component>
 EOF
+
+appstreamcli make-desktop-file %{uniquename}.metainfo.xml %{uniquename}.desktop
 
 # Create the wrapper for /usr/bin
 cat >%{name} <<EOF
@@ -468,12 +562,18 @@ ln -s ../../ant out/idea-ce/dist.all/lib/
 
 %install
 mkdir -p %{buildroot}%{_bindir} \
-         %{buildroot}%{_datadir}/%{shortname}
+         %{buildroot}%{_datadir}/%{shortname} \
+         %{buildroot}%{_datadir}/metainfo/ \
+         %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/ \
+         %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 
 cp -a out/idea-ce/dist.all/* \
       %{buildroot}%{_datadir}/%{shortname}/
 cp -a out/idea-ce/dist.unix/* \
       %{buildroot}%{_datadir}/%{shortname}/
+
+ln -s ../../../../%{shortname}/bin/idea.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
+ln -s ../../../../%{shortname}/bin/idea.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
 
 install -p -m0755 out/idea-ce/dist.unix/bin/fsnotifier64 \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
@@ -485,14 +585,17 @@ install -p -m0755 out/idea-ce/dist.unix/bin/inspect.sh \
 install -p -m0755 %{name} \
                   %{buildroot}%{_bindir}/%{name}
 desktop-file-install --dir %{buildroot}%{_datadir}/applications \
-                     %{name}.desktop
+                     %{uniquename}.desktop
+
+cp %{uniquename}.metainfo.xml %{buildroot}%{_datadir}/metainfo/
+
 
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 
 %files
 
@@ -681,7 +784,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{shortname}/classpath.txt
 %{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{uniquename}.desktop
+%{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/mips64el
@@ -743,7 +848,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
+%files eap
+%{_datadir}/metainfo/%{uniquename}.metainfo.xml
+
 %changelog
+* Sat Apr 3 2021 Chris Throup <chris@throup.eu>
+- Moved metapackage into the same SPEC as the build
 * Fri Mar 26 2021 Chris Throup <chris@throup.eu>
 - Improvements for eap version packaging
 * Thu Mar 25 2021 Chris Throup <chris@throup.eu>
