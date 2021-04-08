@@ -8,8 +8,8 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       211.6693.65
-Release:       2%{?dist}
+Version:       211.6693.111
+Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 # Original package name was a little long...
@@ -487,12 +487,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-yaml
 YAML plugin for Jetbrains IntelliJ.
 
-%package eap
-Summary:       IntelliJ Java IDE - Community Edition - EAP version
+%package release
+Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
 Requires:      %{name} = %{version}
-%description eap
+%description release
 IntelliJ Java IDE based upon the Jetbrains Idea platform.
-Meta-package to track the current EAP version
+Meta-package to track the current RELEASE version
 
 
 %prep
@@ -848,14 +848,16 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
-%files eap
+%files release
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Thu Apr 8 2021 Chris Throup <chris@throup.eu>
+- New RELEASE version
 * Sat Apr 3 2021 Chris Throup <chris@throup.eu>
 - Moved metapackage into the same SPEC as the build
 * Fri Mar 26 2021 Chris Throup <chris@throup.eu>
-- Improvements for eap version packaging
+- Improvements for release version packaging
 * Thu Mar 25 2021 Chris Throup <chris@throup.eu>
 - Improvements for release version packaging
 * Fri Mar 19 2021 Chris Throup <chris@throup.eu>
