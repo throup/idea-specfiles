@@ -9,7 +9,7 @@
 
 Name:          idea-intellij-ce
 Version:       211.6693.111
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 # Original package name was a little long...
@@ -546,6 +546,7 @@ cat > %{uniquename}.metainfo.xml <<EOF
 EOF
 
 appstreamcli make-desktop-file %{uniquename}.metainfo.xml %{uniquename}.desktop
+echo "StartupWMClass=%{vendor}-%{shortname}-ce" >> %{uniquename}.desktop
 
 # Create the wrapper for /usr/bin
 cat >%{name} <<EOF
@@ -852,6 +853,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Tue Apr 20 2021 Chris Throup <chris@throup.eu>
+- Restore StartupWMClass in Desktop file
 * Thu Apr 8 2021 Chris Throup <chris@throup.eu>
 - New RELEASE version
 * Sat Apr 3 2021 Chris Throup <chris@throup.eu>
