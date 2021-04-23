@@ -8,8 +8,8 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       211.6693.111
-Release:       2%{?dist}
+Version:       211.7142.13
+Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 # Original package name was a little long...
@@ -487,12 +487,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-yaml
 YAML plugin for Jetbrains IntelliJ.
 
-%package release
-Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
+%package eap
+Summary:       IntelliJ Java IDE - Community Edition - EAP version
 Requires:      %{name} = %{version}
-%description release
+%description eap
 IntelliJ Java IDE based upon the Jetbrains Idea platform.
-Meta-package to track the current RELEASE version
+Meta-package to track the current EAP version
 
 
 %prep
@@ -849,10 +849,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
-%files release
+%files eap
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Fri Apr 23 2021 Chris Throup <chris@throup.eu>
+- New eap release
 * Tue Apr 20 2021 Chris Throup <chris@throup.eu>
 - Restore StartupWMClass in Desktop file
 * Thu Apr 8 2021 Chris Throup <chris@throup.eu>
