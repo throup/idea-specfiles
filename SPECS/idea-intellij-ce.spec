@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       211.7142.45
+Version:       211.7442.40
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -554,6 +554,11 @@ cat >%{name} <<EOF
 %{_datadir}/%{shortname}/bin/%{shortname}.sh $@
 EOF
 
+cat >%{name}.sh <<EOF
+#!/bin/sh
+export IDEA_JDK=/usr/lib/jvm/java-11
+EOF
+
 # Remove unwanted files
 rm out/idea-ce/dist.unix/Install-Linux-tar.txt
 
@@ -566,7 +571,8 @@ mkdir -p %{buildroot}%{_bindir} \
          %{buildroot}%{_datadir}/%{shortname} \
          %{buildroot}%{_datadir}/metainfo/ \
          %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/ \
-         %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+         %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/ \
+         %{buildroot}%{_sysconfdir}/profile.d
 
 cp -a out/idea-ce/dist.all/* \
       %{buildroot}%{_datadir}/%{shortname}/
@@ -581,10 +587,14 @@ install -p -m0755 out/idea-ce/dist.unix/bin/fsnotifier64 \
 install -p -m0755 out/idea-ce/dist.unix/bin/idea.sh \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
 install -p -m0755 out/idea-ce/dist.unix/bin/inspect.sh \
-                  %{buildroot}%{_datadir}/%{shortname}/bin/
+                  %{buildroot}%{_sysconfdir}/profile.d/
 
 install -p -m0755 %{name} \
                   %{buildroot}%{_bindir}/%{name}
+
+install -p -m0755 %{name}.sh \
+                  %{buildroot}%{_bindir}/%{name}
+
 desktop-file-install --dir %{buildroot}%{_datadir}/applications \
                      %{uniquename}.desktop
 
@@ -788,6 +798,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
+%{_sysconfdir}/profile.d/%{name},sh
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/mips64el
@@ -853,6 +864,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Sun Jun 2 2021 Chris Throup <chris@throup.eu>
+- New release version
 * Sun May 2 2021 Chris Throup <chris@throup.eu>
 - New release version
 * Fri Apr 23 2021 Chris Throup <chris@throup.eu>
