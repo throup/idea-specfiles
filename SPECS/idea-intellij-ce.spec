@@ -21,7 +21,13 @@ License:       Apache License
 URL:           https://github.com/JetBrains/intellij-community/tree/%{shortname}/%{version}
 Source0:       https://github.com/JetBrains/intellij-community/archive/%{shortname}/%{version}.tar.gz
 %define suppl1 android-idea-%{version}
-Source1:       https://github.com/JetBrains/android/archive/%{shortname}/%{version}.tar.gz#/%{suppl1}.tar.gz
+
+# This is an earlier version of the android project.
+# At the time of writing, no unique version has been tagged for this release of IntelliJ, so we use the most recent
+# previous tag.
+#Source1:       https://github.com/JetBrains/android/archive/%{shortname}/%{version}.tar.gz#/%{suppl1}.tar.gz
+Source1:       https://github.com/JetBrains/android/archive/%{shortname}/211.7442.27.tar.gz#/%{suppl1}.tar.gz
+
 # This is an earlier version of the library definition.
 # At the time of writing, the current version points to an artifact which is not published publically.
 Source2:       https://raw.githubusercontent.com/JetBrains/intellij-community/d8314c735234a95228e992df2ae3a12a417ccad0/.idea/libraries/Log4J.xml
