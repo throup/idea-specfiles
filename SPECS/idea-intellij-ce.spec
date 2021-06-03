@@ -599,7 +599,7 @@ install -p -m0755 %{name} \
                   %{buildroot}%{_bindir}/%{name}
 
 install -p -m0755 %{name}.sh \
-                  %{buildroot}%{_bindir}/%{name}
+                  %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 
 desktop-file-install --dir %{buildroot}%{_datadir}/applications \
                      %{uniquename}.desktop
