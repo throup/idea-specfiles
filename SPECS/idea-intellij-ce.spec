@@ -870,7 +870,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
-* Sun Jun 2 2021 Chris Throup <chris@throup.eu>
+* Wed Jun 2 2021 Chris Throup <chris@throup.eu>
 - New release version
 * Sun May 2 2021 Chris Throup <chris@throup.eu>
 - New release version
