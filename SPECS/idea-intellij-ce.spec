@@ -593,7 +593,7 @@ install -p -m0755 out/idea-ce/dist.unix/bin/fsnotifier64 \
 install -p -m0755 out/idea-ce/dist.unix/bin/idea.sh \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
 install -p -m0755 out/idea-ce/dist.unix/bin/inspect.sh \
-                  %{buildroot}%{_sysconfdir}/profile.d/
+                  %{buildroot}%{_datadir}/%{shortname}/bin/
 
 install -p -m0755 %{name} \
                   %{buildroot}%{_bindir}/%{name}
