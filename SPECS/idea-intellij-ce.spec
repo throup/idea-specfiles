@@ -804,7 +804,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
-%{_sysconfdir}/profile.d/%{name},sh
+%{_sysconfdir}/profile.d/%{name}.sh
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
 %exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/mips64el
