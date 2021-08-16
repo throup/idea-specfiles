@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       211.7628.21
+Version:       212.4746.92
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -24,7 +24,7 @@ Source0:       https://github.com/JetBrains/intellij-community/archive/%{shortna
 # This is an earlier version of the android project.
 # At the time of writing, no unique version has been tagged for this release of IntelliJ, so we use the most recent
 # previous tag.
-%define androidversion 211.7442.27
+%define androidversion 212.3116.43
 %define suppl1 android-idea-%{androidversion}
 Source1:       https://github.com/JetBrains/android/archive/%{shortname}/%{androidversion}.tar.gz#/%{suppl1}.tar.gz
 
@@ -870,6 +870,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Mon Aug 16 2021 Chris Throup <chris@throup.eu>
+- New release version
 * Mon Jul 5 2021 Chris Throup <chris@throup.eu>
 - New release version
 * Wed Jun 2 2021 Chris Throup <chris@throup.eu>
