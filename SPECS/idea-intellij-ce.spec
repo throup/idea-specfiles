@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       212.4746.92
+Version:       212.5284.40
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -870,6 +870,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Mon Sep 20 2021 Chris Throup <chris@throup.eu>
+- New release version
 * Mon Aug 16 2021 Chris Throup <chris@throup.eu>
 - New release version
 * Mon Jul 5 2021 Chris Throup <chris@throup.eu>
