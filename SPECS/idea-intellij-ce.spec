@@ -27,6 +27,7 @@ Source1:       https://raw.githubusercontent.com/JetBrains/intellij-community/d8
 
 BuildRequires: ant
 BuildRequires: appstream
+BuildRequires: git
 BuildRequires: desktop-file-utils
 BuildRequires: java-sdk-11
 Requires:      java-11
