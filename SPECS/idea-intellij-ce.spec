@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       212.5284.40
+Version:       212.5457.46
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -20,10 +20,6 @@ Group:         Development
 License:       Apache License
 URL:           https://github.com/JetBrains/intellij-community/tree/%{shortname}/%{version}
 Source0:       https://github.com/JetBrains/intellij-community/archive/%{shortname}/%{version}.tar.gz
-
-# This is an earlier version of the library definition.
-# At the time of writing, the current version points to an artifact which is not published publically.
-Source1:       https://raw.githubusercontent.com/JetBrains/intellij-community/d8314c735234a95228e992df2ae3a12a417ccad0/.idea/libraries/Log4J.xml
 
 BuildRequires: ant
 BuildRequires: appstream
@@ -47,7 +43,6 @@ Requires:      %{name}-plugin-editorconfig = %{version}
 Requires:      %{name}-plugin-emojipicker = %{version}
 Requires:      %{name}-plugin-externalsystem-dependencyupdater = %{version}
 Requires:      %{name}-plugin-featurestrainer = %{version}
-Requires:      %{name}-plugin-fileprediction = %{version}
 Requires:      %{name}-plugin-git4idea = %{version}
 Requires:      %{name}-plugin-github = %{version}
 Requires:      %{name}-plugin-gradle = %{version}
@@ -64,14 +59,14 @@ Requires:      %{name}-plugin-javafx = %{version}
 Requires:      %{name}-plugin-java-i18n = %{version}
 Requires:      %{name}-plugin-java-ide-customization = %{version}
 Requires:      %{name}-plugin-junit = %{version}
-Requires:      %{name}-plugin-kotlin = %{version}
+Requires:      %{name}-plugin-kotlin-plugin-community = %{version}
 Requires:      %{name}-plugin-lombok = %{version}
 Requires:      %{name}-plugin-markdown = %{version}
 Requires:      %{name}-plugin-maven = %{version}
 Requires:      %{name}-plugin-maven-model = %{version}
+Requires:      %{name}-plugin-package-search = %{version}
 Requires:      %{name}-plugin-platform-images = %{version}
 Requires:      %{name}-plugin-properties = %{version}
-Requires:      %{name}-plugin-properties-resource-bundle-editor = %{version}
 Requires:      %{name}-plugin-repository-search = %{version}
 Requires:      %{name}-plugin-settings-repository = %{version}
 Requires:      %{name}-plugin-sh = %{version}
@@ -84,6 +79,7 @@ Requires:      %{name}-plugin-testng = %{version}
 Requires:      %{name}-plugin-textmate = %{version}
 Requires:      %{name}-plugin-uidesigner = %{version}
 Requires:      %{name}-plugin-vcs-changereminder = %{version}
+Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
 Requires:      %{name}-plugin-webp = %{version}
 Requires:      %{name}-plugin-xpath = %{version}
 Requires:      %{name}-plugin-xslt-debugger = %{version}
@@ -319,11 +315,11 @@ Requires:      %{name}-core = %{version}
 %description plugin-intellilang
 IntelliLang plugin for Jetbrains IntelliJ.
 
-%package plugin-kotlin
+%package plugin-kotlin-plugin-community
 Summary:       IntelliJ Java IDE - Kotlin plugin
 Group:         Development
 Requires:      %{name}-core = %{version}
-%description plugin-kotlin
+%description plugin-kotlin-plugin-community
 Kotlin plugin for Jetbrains IntelliJ.
 
 %package plugin-lombok
@@ -340,19 +336,19 @@ Requires:      %{name}-core = %{version}
 %description plugin-featurestrainer
 FeaturesTrainer plugin for Jetbrains IntelliJ.
 
-%package plugin-fileprediction
-Summary:       IntelliJ Java IDE - FilePrediction plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-fileprediction
-FilePrediction plugin for Jetbrains IntelliJ.
-
 %package plugin-hg4idea
 Summary:       IntelliJ Java IDE - Hg4idea plugin
 Group:         Development
 Requires:      %{name}-core = %{version}
 %description plugin-hg4idea
 Hg4idea plugin for Jetbrains IntelliJ.
+
+%package plugin-package-search
+Summary:       IntelliJ Java IDE - PackageSearch plugin
+Group:         Development
+Requires:      %{name}-core = %{version}
+%description plugin-package-search
+PackageSearch plugin for Jetbrains IntelliJ.
 
 %package plugin-platform-images
 Summary:       IntelliJ Java IDE - Platform-images plugin
@@ -367,13 +363,6 @@ Group:         Development
 Requires:      %{name}-core = %{version}
 %description plugin-properties
 Properties plugin for Jetbrains IntelliJ.
-
-%package plugin-properties-resource-bundle-editor
-Summary:       IntelliJ Java IDE - Properties-resource-bundle-editor plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-properties-resource-bundle-editor
-Properties-resource-bundle-editor plugin for Jetbrains IntelliJ.
 
 %package plugin-repository-search
 Summary:       IntelliJ Java IDE - Repository-search plugin
@@ -459,6 +448,13 @@ Requires:      %{name}-core = %{version}
 %description plugin-vcs-changereminder
 Vcs-changeReminder plugin for Jetbrains IntelliJ.
 
+%package plugin-vcs-git-featurestrainer
+Summary:       IntelliJ Java IDE - VCS Git FeaturesTrainer plugin
+Group:         Development
+Requires:      %{name}-core = %{version}
+%description plugin-vcs-git-featurestrainer
+VCS Git FeaturesTrainer plugin for Jetbrains IntelliJ.
+
 %package plugin-webp
 Summary:       IntelliJ Java IDE - Webp plugin
 Group:         Development
@@ -498,8 +494,7 @@ Meta-package to track the current RELEASE version
 %prep
 %setup -qn "%{buildname}-%{version}"
 echo %{version} > build.txt
-git clone -b idea/%{version} git://git.jetbrains.org/idea/android.git
-cp %_topdir/SOURCES/Log4J.xml .idea/libraries/
+git clone --depth=1 -b idea/%{version} git://git.jetbrains.org/idea/android.git
 
 %build
 # Needed because pre-33 systems default to Java 8 even if a later version is installed.
@@ -581,7 +576,7 @@ cp -a out/idea-ce/dist.unix/* \
 ln -s ../../../../%{shortname}/bin/idea.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 ln -s ../../../../%{shortname}/bin/idea.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
 
-install -p -m0755 out/idea-ce/dist.unix/bin/fsnotifier64 \
+install -p -m0755 out/idea-ce/dist.unix/bin/fsnotifier \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
 install -p -m0755 out/idea-ce/dist.unix/bin/idea.sh \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
@@ -709,8 +704,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-intellilang
 %{_datadir}/%{shortname}/plugins/IntelliLang
 
-%files plugin-kotlin
-%{_datadir}/%{shortname}/plugins/Kotlin
+%files plugin-kotlin-plugin-community
+%{_datadir}/%{shortname}/plugins/KotlinPluginCommunity
 
 %files plugin-lombok
 %{_datadir}/%{shortname}/plugins/lombok
@@ -718,20 +713,17 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-featurestrainer
 %{_datadir}/%{shortname}/plugins/featuresTrainer
 
-%files plugin-fileprediction
-%{_datadir}/%{shortname}/plugins/filePrediction
-
 %files plugin-hg4idea
 %{_datadir}/%{shortname}/plugins/hg4idea
+
+%files plugin-package-search
+%{_datadir}/%{shortname}/plugins/packageSearch
 
 %files plugin-platform-images
 %{_datadir}/%{shortname}/plugins/platform-images
 
 %files plugin-properties
 %{_datadir}/%{shortname}/plugins/properties
-
-%files plugin-properties-resource-bundle-editor
-%{_datadir}/%{shortname}/plugins/properties-resource-bundle-editor
 
 %files plugin-repository-search
 %{_datadir}/%{shortname}/plugins/repository-search
@@ -769,6 +761,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-vcs-changereminder
 %{_datadir}/%{shortname}/plugins/vcs-changeReminder
 
+%files plugin-vcs-git-featurestrainer
+%{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
+
 %files plugin-webp
 %{_datadir}/%{shortname}/plugins/webp
 
@@ -789,10 +784,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/%{shortname}/lib
 %{_datadir}/%{shortname}/plugins
 %{_datadir}/%{shortname}/redist
-%{_datadir}/%{shortname}/brokenPlugins.db
 %{_datadir}/%{shortname}/build.txt
-%{_datadir}/%{shortname}/classpath.txt
-%{_datadir}/%{shortname}/icons.db
 %{_bindir}/%{name}
 %{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
@@ -834,14 +826,13 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/maven
 %exclude %{_datadir}/%{shortname}/plugins/maven-model
 %exclude %{_datadir}/%{shortname}/plugins/IntelliLang
-%exclude %{_datadir}/%{shortname}/plugins/Kotlin
+%exclude %{_datadir}/%{shortname}/plugins/KotlinPluginCommunity
 %exclude %{_datadir}/%{shortname}/plugins/lombok
 %exclude %{_datadir}/%{shortname}/plugins/featuresTrainer
-%exclude %{_datadir}/%{shortname}/plugins/filePrediction
 %exclude %{_datadir}/%{shortname}/plugins/hg4idea
+%exclude %{_datadir}/%{shortname}/plugins/packageSearch
 %exclude %{_datadir}/%{shortname}/plugins/platform-images
 %exclude %{_datadir}/%{shortname}/plugins/properties
-%exclude %{_datadir}/%{shortname}/plugins/properties-resource-bundle-editor
 %exclude %{_datadir}/%{shortname}/plugins/repository-search
 %exclude %{_datadir}/%{shortname}/plugins/settings-repository
 %exclude %{_datadir}/%{shortname}/plugins/sh
@@ -854,6 +845,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/textmate
 %exclude %{_datadir}/%{shortname}/plugins/uiDesigner
 %exclude %{_datadir}/%{shortname}/plugins/vcs-changeReminder
+%exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 %exclude %{_datadir}/%{shortname}/plugins/webp
 %exclude %{_datadir}/%{shortname}/plugins/xpath
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
@@ -863,6 +855,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Mon Nov 1 2021 Chris Throup <chris@throup.eu>
+- New release version
 * Mon Sep 20 2021 Chris Throup <chris@throup.eu>
 - New release version
 * Mon Aug 16 2021 Chris Throup <chris@throup.eu>
