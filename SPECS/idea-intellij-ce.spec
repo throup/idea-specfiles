@@ -9,7 +9,7 @@
 
 Name:          idea-intellij-ce
 Version:       212.5457.46
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 # Original package name was a little long...
@@ -573,6 +573,12 @@ cp -a out/idea-ce/dist.all/* \
 cp -a out/idea-ce/dist.unix/* \
       %{buildroot}%{_datadir}/%{shortname}/
 
+rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
+rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
+rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/arm
+rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/mips64el
+rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/ppc64le
+
 ln -s ../../../../%{shortname}/bin/idea.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 ln -s ../../../../%{shortname}/bin/idea.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
 
@@ -593,7 +599,6 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications \
                      %{uniquename}.desktop
 
 cp %{uniquename}.metainfo.xml %{buildroot}%{_datadir}/metainfo/
-
 
 %post -p /sbin/ldconfig
 
@@ -790,10 +795,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
 %{_sysconfdir}/profile.d/%{name}.sh
-%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
-%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
-%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/mips64el
-%exclude %{_datadir}/%{shortname}/lib/pty4j-native/linux/ppc64le
 %exclude %{_datadir}/%{shortname}/lib/ant
 %exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
