@@ -59,7 +59,7 @@ Requires:      %{name}-plugin-javafx = %{version}
 Requires:      %{name}-plugin-java-i18n = %{version}
 Requires:      %{name}-plugin-java-ide-customization = %{version}
 Requires:      %{name}-plugin-junit = %{version}
-Requires:      %{name}-plugin-kotlin-plugin-community = %{version}
+Requires:      %{name}-plugin-kotlin = %{version}
 Requires:      %{name}-plugin-lombok = %{version}
 Requires:      %{name}-plugin-markdown = %{version}
 Requires:      %{name}-plugin-maven = %{version}
@@ -315,11 +315,11 @@ Requires:      %{name}-core = %{version}
 %description plugin-intellilang
 IntelliLang plugin for Jetbrains IntelliJ.
 
-%package plugin-kotlin-plugin-community
+%package plugin-kotlin
 Summary:       IntelliJ Java IDE - Kotlin plugin
 Group:         Development
 Requires:      %{name}-core = %{version}
-%description plugin-kotlin-plugin-community
+%description plugin-kotlin
 Kotlin plugin for Jetbrains IntelliJ.
 
 %package plugin-lombok
@@ -709,8 +709,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-intellilang
 %{_datadir}/%{shortname}/plugins/IntelliLang
 
-%files plugin-kotlin-plugin-community
-%{_datadir}/%{shortname}/plugins/KotlinPluginCommunity
+%files plugin-kotlin
+%{_datadir}/%{shortname}/plugins/Kotlin
 
 %files plugin-lombok
 %{_datadir}/%{shortname}/plugins/lombok
@@ -827,7 +827,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/maven
 %exclude %{_datadir}/%{shortname}/plugins/maven-model
 %exclude %{_datadir}/%{shortname}/plugins/IntelliLang
-%exclude %{_datadir}/%{shortname}/plugins/KotlinPluginCommunity
+%exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/lombok
 %exclude %{_datadir}/%{shortname}/plugins/featuresTrainer
 %exclude %{_datadir}/%{shortname}/plugins/hg4idea
