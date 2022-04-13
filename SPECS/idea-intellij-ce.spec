@@ -498,8 +498,11 @@ git clone --depth=1 -b idea/%{version} git://git.jetbrains.org/idea/android.git
 
 %build
 # Needed because pre-33 systems default to Java 8 even if a later version is installed.
-export JAVA_HOME=$(rpm -ql $(rpm -q --whatprovides java-11-headless) | grep "jre")
+#export JAVA_HOME=$(rpm -ql $(rpm -q --whatprovides java-11-headless) | grep "jre")
 export ANT_OPTS="$ANT_OPTS -Dintellij.build.target.os=linux"
+echo Checking our lang:
+env | grep LANG
+export LANG=en_US.UTF-8
 ant -Dintellij.build.target.os=linux
 
 cat > %{uniquename}.metainfo.xml <<EOF
