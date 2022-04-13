@@ -503,7 +503,7 @@ export ANT_OPTS="$ANT_OPTS -Dintellij.build.target.os=linux"
 echo Checking our lang:
 env | grep LANG
 export LANG=en_US.UTF-8
-ant -Dintellij.build.target.os=linux
+./installers.cmd -Dintellij.build.target.os=linux
 
 cat > %{uniquename}.metainfo.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
