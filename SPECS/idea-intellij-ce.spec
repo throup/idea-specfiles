@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       221.5080.210
+Version:       221.5591.52
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -556,9 +556,6 @@ cat >%{name}.sh <<EOF
 export IDEA_JDK=/usr/lib/jvm/java-11
 EOF
 
-# Remove unwanted files
-rm out/idea-ce/dist.unix/Install-Linux-tar.txt
-
 # Removing bundled libs which are also provided by Fedora
 rm -r out/idea-ce/dist.all/lib/ant
 ln -s ../../ant out/idea-ce/dist.all/lib/
@@ -573,7 +570,7 @@ mkdir -p %{buildroot}%{_bindir} \
 
 cp -a out/idea-ce/dist.all/* \
       %{buildroot}%{_datadir}/%{shortname}/
-cp -a out/idea-ce/dist.unix/* \
+cp -a out/idea-ce/dist.unix.x64/* \
       %{buildroot}%{_datadir}/%{shortname}/
 
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
@@ -585,11 +582,11 @@ rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/ppc64le
 ln -s ../../../../%{shortname}/bin/idea.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 ln -s ../../../../%{shortname}/bin/idea.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
 
-install -p -m0755 out/idea-ce/dist.unix/bin/fsnotifier \
+install -p -m0755 out/idea-ce/dist.unix.x64/bin/fsnotifier \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
-install -p -m0755 out/idea-ce/dist.unix/bin/idea.sh \
+install -p -m0755 out/idea-ce/dist.unix.x64/bin/idea.sh \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
-install -p -m0755 out/idea-ce/dist.unix/bin/inspect.sh \
+install -p -m0755 out/idea-ce/dist.unix.x64/bin/inspect.sh \
                   %{buildroot}%{_datadir}/%{shortname}/bin/
 
 install -p -m0755 %{name} \
@@ -791,7 +788,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/%{shortname}/bin
 %{_datadir}/%{shortname}/lib
 %{_datadir}/%{shortname}/plugins
-%{_datadir}/%{shortname}/redist
+#%{_datadir}/%{shortname}/redist
 %{_datadir}/%{shortname}/build.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{uniquename}.desktop
@@ -859,49 +856,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
-* Wed Apr 13 2022 Chris Throup <chris@throup.eu>
+* Tue May 24 2022 Chris Throup <chris@throup.eu>
 - New release version
-* Wed Mar 30 2022 Chris Throup <chris@throup.eu>
-- New release version
-* Fri Feb 18 2022 Chris Throup <chris@throup.eu>
-- New release version
-* Thu Jan 6 2022 Chris Throup <chris@throup.eu>
-- New release version
-* Mon Nov 1 2021 Chris Throup <chris@throup.eu>
-- New release version
-* Mon Sep 20 2021 Chris Throup <chris@throup.eu>
-- New release version
-* Mon Aug 16 2021 Chris Throup <chris@throup.eu>
-- New release version
-* Mon Jul 5 2021 Chris Throup <chris@throup.eu>
-- New release version
-* Wed Jun 2 2021 Chris Throup <chris@throup.eu>
-- New release version
-* Sun May 2 2021 Chris Throup <chris@throup.eu>
-- New release version
-* Fri Apr 23 2021 Chris Throup <chris@throup.eu>
-- New eap release
-* Tue Apr 20 2021 Chris Throup <chris@throup.eu>
-- Restore StartupWMClass in Desktop file
-* Thu Apr 8 2021 Chris Throup <chris@throup.eu>
-- New RELEASE version
-* Sat Apr 3 2021 Chris Throup <chris@throup.eu>
-- Moved metapackage into the same SPEC as the build
-* Fri Mar 26 2021 Chris Throup <chris@throup.eu>
-- Improvements for release version packaging
-* Thu Mar 25 2021 Chris Throup <chris@throup.eu>
-- Improvements for release version packaging
-* Fri Mar 19 2021 Chris Throup <chris@throup.eu>
-- Split remaining plugins into separate subpackages
-* Thu Mar 18 2021 Chris Throup <chris@throup.eu>
-- Split additional plugins into separate subpackages
-* Wed Mar 17 2021 Chris Throup <chris@throup.eu>
-- Split additional plugins into separate subpackages
-* Tue Mar 16 2021 Chris Throup <chris@throup.eu>
-- Split Android plugin into separate subpackage
-* Mon Mar 15 2021 Chris Throup <chris@throup.eu>
-- Under git control for release through COPR
-* Fri Mar 12 2021 Chris Throup <chris@throup.eu>
-- Tweaked for the modern world of Github
 * Sat Dec  6 2014 Chris Throup <chris@throup.org.uk>
 - Initial RPM release
