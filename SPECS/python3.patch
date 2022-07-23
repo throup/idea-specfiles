@@ -1,0 +1,9 @@
+diff -ru intellij-community-idea-221.5591.52/bin/linux/restart.py intellij-community-idea-221.5591.52.patched/bin/linux/restart.py
+--- intellij-community-idea-221.5591.52/bin/linux/restart.py	2022-05-10 10:34:16.000000000 +0200
++++ intellij-community-idea-221.5591.52.patched/bin/linux/restart.py	2022-05-24 14:52:22.795008914 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Waits for the parent process to terminate, then executes specified commands.
+ 

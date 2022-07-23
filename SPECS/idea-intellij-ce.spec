@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       221.5591.52
+Version:       222.3345.90
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -20,6 +20,7 @@ Group:         Development
 License:       Apache License
 URL:           https://github.com/JetBrains/intellij-community/tree/%{shortname}/%{version}
 Source0:       https://github.com/JetBrains/intellij-community/archive/%{shortname}/%{version}.tar.gz
+Patch0:        python3.patch
 
 BuildRequires: ant
 BuildRequires: appstream
@@ -41,7 +42,7 @@ Requires:      %{name}-plugin-devkit = %{version}
 Requires:      %{name}-plugin-eclipse = %{version}
 Requires:      %{name}-plugin-editorconfig = %{version}
 Requires:      %{name}-plugin-emojipicker = %{version}
-Requires:      %{name}-plugin-externalsystem-dependencyupdater = %{version}
+#Requires:      %{name}-plugin-externalsystem-dependencyupdater = %{version}
 Requires:      %{name}-plugin-featurestrainer = %{version}
 Requires:      %{name}-plugin-git4idea = %{version}
 Requires:      %{name}-plugin-github = %{version}
@@ -78,7 +79,7 @@ Requires:      %{name}-plugin-terminal = %{version}
 Requires:      %{name}-plugin-testng = %{version}
 Requires:      %{name}-plugin-textmate = %{version}
 Requires:      %{name}-plugin-uidesigner = %{version}
-Requires:      %{name}-plugin-vcs-changereminder = %{version}
+#Requires:      %{name}-plugin-vcs-changereminder = %{version}
 Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
 Requires:      %{name}-plugin-webp = %{version}
 Requires:      %{name}-plugin-xpath = %{version}
@@ -182,12 +183,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-emojipicker
 Emojipicker plugin for Jetbrains IntelliJ.
 
-%package plugin-externalsystem-dependencyupdater
-Summary:       IntelliJ Java IDE - External System Dependency Updater plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-externalsystem-dependencyupdater
-External System Dependency Updater plugin for Jetbrains IntelliJ.
+#%package plugin-externalsystem-dependencyupdater
+#Summary:       IntelliJ Java IDE - External System Dependency Updater plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-externalsystem-dependencyupdater
+#External System Dependency Updater plugin for Jetbrains IntelliJ.
 
 %package plugin-git4idea
 Summary:       IntelliJ Java IDE - Git plugin
@@ -441,12 +442,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-uidesigner
 UiDesigner plugin for Jetbrains IntelliJ.
 
-%package plugin-vcs-changereminder
-Summary:       IntelliJ Java IDE - Vcs-changeReminder plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-vcs-changereminder
-Vcs-changeReminder plugin for Jetbrains IntelliJ.
+#%package plugin-vcs-changereminder
+#Summary:       IntelliJ Java IDE - Vcs-changeReminder plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-vcs-changereminder
+#Vcs-changeReminder plugin for Jetbrains IntelliJ.
 
 %package plugin-vcs-git-featurestrainer
 Summary:       IntelliJ Java IDE - VCS Git FeaturesTrainer plugin
@@ -493,17 +494,21 @@ Meta-package to track the current RELEASE version
 
 %prep
 %setup -qn "%{buildname}-%{version}"
+%patch0 -p1
+
 echo %{version} > build.txt
 git clone --depth=1 -b idea/%{version} git://git.jetbrains.org/idea/android.git
 
 %build
-# Needed because pre-33 systems default to Java 8 even if a later version is installed.
-#export JAVA_HOME=$(rpm -ql $(rpm -q --whatprovides java-11-headless) | grep "jre")
-export ANT_OPTS="$ANT_OPTS -Dintellij.build.target.os=linux"
+mkdir -p out/idea-ce/temp/builtinModules/system/log
+touch out/idea-ce/temp/builtinModules/system/log/idea.log
+
+export JAVA_HOME=$(rpm -ql $(rpm -q --whatprovides java-11-headless) | grep "jre")
+export ANT_OPTS="$ANT_OPTS -Dintellij.build.target.os=linux64"
 echo Checking our lang:
 env | grep LANG
 export LANG=en_US.UTF-8
-./installers.cmd -Dintellij.build.target.os=linux
+./installers.cmd -Dintellij.build.target.os=linux64
 
 cat > %{uniquename}.metainfo.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -578,6 +583,7 @@ rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/arm
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/mips64el
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/ppc64le
+rm -Rf %{buildroot}%{_datadir}/%{shortname}/Install-Linux-tar.txt
 
 ln -s ../../../../%{shortname}/bin/idea.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 ln -s ../../../../%{shortname}/bin/idea.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
@@ -646,8 +652,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-emojipicker
 %{_datadir}/%{shortname}/plugins/emojipicker
 
-%files plugin-externalsystem-dependencyupdater
-%{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
+#%files plugin-externalsystem-dependencyupdater
+#%{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
 
 %files plugin-git4idea
 %{_datadir}/%{shortname}/plugins/git4idea
@@ -763,8 +769,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-uidesigner
 %{_datadir}/%{shortname}/plugins/uiDesigner
 
-%files plugin-vcs-changereminder
-%{_datadir}/%{shortname}/plugins/vcs-changeReminder
+#%files plugin-vcs-changereminder
+#%{_datadir}/%{shortname}/plugins/vcs-changeReminder
 
 %files plugin-vcs-git-featurestrainer
 %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
@@ -788,7 +794,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/%{shortname}/bin
 %{_datadir}/%{shortname}/lib
 %{_datadir}/%{shortname}/plugins
-#%{_datadir}/%{shortname}/redist
 %{_datadir}/%{shortname}/build.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{uniquename}.desktop
@@ -808,7 +813,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/eclipse
 %exclude %{_datadir}/%{shortname}/plugins/editorconfig
 %exclude %{_datadir}/%{shortname}/plugins/emojipicker
-%exclude %{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
+#%exclude %{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
 %exclude %{_datadir}/%{shortname}/plugins/git4idea
 %exclude %{_datadir}/%{shortname}/plugins/github
 %exclude %{_datadir}/%{shortname}/plugins/gradle
@@ -845,7 +850,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/testng
 %exclude %{_datadir}/%{shortname}/plugins/textmate
 %exclude %{_datadir}/%{shortname}/plugins/uiDesigner
-%exclude %{_datadir}/%{shortname}/plugins/vcs-changeReminder
+#%exclude %{_datadir}/%{shortname}/plugins/vcs-changeReminder
 %exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 %exclude %{_datadir}/%{shortname}/plugins/webp
 %exclude %{_datadir}/%{shortname}/plugins/xpath
@@ -856,6 +861,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %changelog
+* Sat Jul 23 2022 Chris Throup <chris@throup.eu>
+- New release version
+* Wed Jun 22 2022 Chris Throup <chris@throup.eu>
+- New release version
+* Wed Jun 1 2022 Chris Throup <chris@throup.eu>
+- New release version
 * Tue May 24 2022 Chris Throup <chris@throup.eu>
 - New release version
 * Sat Dec  6 2014 Chris Throup <chris@throup.org.uk>
