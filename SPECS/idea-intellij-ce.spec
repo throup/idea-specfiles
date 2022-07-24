@@ -25,6 +25,7 @@ Patch0:        python3.patch
 BuildRequires: ant
 BuildRequires: appstream
 BuildRequires: git
+BuildRequires: maven
 BuildRequires: desktop-file-utils
 BuildRequires: java-sdk-11
 Requires:      java-11
