@@ -504,11 +504,11 @@ mkdir -p out/idea-ce/temp/builtinModules/system/log
 touch out/idea-ce/temp/builtinModules/system/log/idea.log
 
 export JAVA_HOME=$(rpm -ql $(rpm -q --whatprovides java-11-headless) | grep "jre")
-export ANT_OPTS="$ANT_OPTS -Dintellij.build.target.os=linux64"
+export ANT_OPTS="$ANT_OPTS -Dintellij.build.dev.mode=false -Dintellij.build.target.os=current"
 echo Checking our lang:
 env | grep LANG
 export LANG=en_US.UTF-8
-./installers.cmd -Dintellij.build.target.os=linux64
+./installers.cmd -Dintellij.build.dev.mode=false -Dintellij.build.target.os=current
 
 cat > %{uniquename}.metainfo.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
