@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       222.3345.90
+Version:       222.3345.118
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
