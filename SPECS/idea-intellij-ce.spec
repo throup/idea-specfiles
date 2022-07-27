@@ -21,6 +21,7 @@ License:       Apache License
 URL:           https://github.com/JetBrains/intellij-community/tree/%{shortname}/%{version}
 Source0:       https://github.com/JetBrains/intellij-community/archive/%{shortname}/%{version}.tar.gz
 Patch0:        python3.patch
+Patch1:        myxh.patch
 
 BuildRequires: ant
 BuildRequires: appstream
@@ -496,9 +497,14 @@ Meta-package to track the current RELEASE version
 %prep
 %setup -qn "%{buildname}-%{version}"
 %patch0 -p1
+%patch1 -p1
 
 echo %{version} > build.txt
 git clone --depth=1 -b idea/%{version} git://git.jetbrains.org/idea/android.git
+
+# Testing module has invalid imports
+# Probably only works on Jetbrains CI... sigh
+rm -Rf tools/ideTestingFramework
 
 # Junit hack -- package depends on local maven repo containing junit 3.8.1
 mkdir junithack

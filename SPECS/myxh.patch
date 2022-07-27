@@ -1,0 +1,21 @@
+diff -urN intellij-community-idea-222.3345.118/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy intellij-community-idea-222.3345.118.patched/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy
+--- intellij-community-idea-222.3345.118/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy	2022-07-22 18:41:45.000000000 +0200
++++ intellij-community-idea-222.3345.118.patched/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy	2022-07-27 21:03:20.800406519 +0200
+@@ -45,9 +45,7 @@
+       "intellij.platform.debugger.testFramework",
+       "intellij.platform.vcs.testFramework",
+       "intellij.platform.externalSystem.testFramework",
+-      "intellij.maven.testFramework",
+-      "intellij.tools.ide.starter",
+-      "intellij.tools.ide.metricsCollector"
++      "intellij.maven.testFramework"
+     ]
+     mavenArtifacts.squashedModules += [
+       "intellij.platform.util.base",
+@@ -153,4 +151,4 @@
+ 
+   @Override
+   String getOutputDirectoryName(ApplicationInfoProperties applicationInfo) { "idea-ce" }
+-}
+\ No newline at end of file
++}
