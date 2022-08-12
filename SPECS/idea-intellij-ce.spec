@@ -9,7 +9,7 @@
 
 Name:          idea-intellij-ce
 Version:       222.3739.40
-Release:       1%{?dist}
+Release:       3%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 # Original package name was a little long...
@@ -95,8 +95,17 @@ IntelliJ Java IDE based upon the Jetbrains Idea platform.
 %package core
 Summary:       IntelliJ Java IDE - core files
 Group:         Development
+Recommends:    %{name}-jbr = %{version}
 %description core
 Core files for Jetbrains IntelliJ.
+
+%package jbr
+Summary:       IntelliJ Java IDE - Java runtime provided by Jetbrains
+Group:         Development
+%description jbr
+Java runtime, provided by Jetbrains, built especially for the IntelliJ IDE.
+This is an optional package, but guarantees full functionality which may not be available
+when running the IDE on the standard OpenJDK distributions.
 
 %package plugin-ant
 Summary:       IntelliJ Java IDE - Ant plugin
@@ -602,9 +611,14 @@ cat >%{name} <<EOF
 %{_datadir}/%{shortname}/bin/%{shortname}.sh $@
 EOF
 
-cat >%{name}.sh <<EOF
+cat >%{name}-default.sh <<EOF
 #!/bin/sh
 export IDEA_JDK=/usr/lib/jvm/java-11
+EOF
+
+cat >%{name}-jbr.sh <<EOF
+#!/bin/sh
+export IDEA_JDK=/usr/lib/jvm/jbr-jetbrains
 EOF
 
 # Removing bundled libs which are also provided by Fedora
@@ -617,12 +631,16 @@ mkdir -p %{buildroot}%{_bindir} \
          %{buildroot}%{_datadir}/metainfo/ \
          %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/ \
          %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/ \
-         %{buildroot}%{_sysconfdir}/profile.d
+         %{buildroot}%{_sysconfdir}/profile.d \
+         %{buildroot}%{_exec_prefix}/lib/jvm/jbr-jetbrains
 
 cp -a out/idea-ce/dist.all/* \
       %{buildroot}%{_datadir}/%{shortname}/
 cp -a out/idea-ce/dist.unix.x64/* \
       %{buildroot}%{_datadir}/%{shortname}/
+cp -a build/download/jbr_jcef-17.0.3b469.37-linux-x64/jbr/* \
+      %{buildroot}%{_exec_prefix}/lib/jvm/jbr-jetbrains
+rm -f %{buildroot}%{_exec_prefix}/lib/jvm/jbr-jetbrains/lib/libjceftesthelpers.so
 
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/x86
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/lib/pty4j-native/linux/aarch64
@@ -644,8 +662,10 @@ install -p -m0755 out/idea-ce/dist.unix.x64/bin/inspect.sh \
 install -p -m0755 %{name} \
                   %{buildroot}%{_bindir}/%{name}
 
-install -p -m0755 %{name}.sh \
-                  %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
+install -p -m0755 %{name}-default.sh \
+                  %{buildroot}%{_sysconfdir}/profile.d/%{name}-default.sh
+install -p -m0755 %{name}-jbr.sh \
+                  %{buildroot}%{_sysconfdir}/profile.d/%{name}-jbr.sh
 
 desktop-file-install --dir %{buildroot}%{_datadir}/applications \
                      %{uniquename}.desktop
@@ -845,7 +865,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/icons/hicolor/128x128/apps/%{uniquename}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
-%{_sysconfdir}/profile.d/%{name}.sh
+%{_sysconfdir}/profile.d/%{name}-default.sh
 %exclude %{_datadir}/%{shortname}/lib/ant
 %exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
@@ -909,7 +929,13 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files eap
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
+%files jbr
+%{_exec_prefix}/lib/jvm/jbr-jetbrains
+%{_sysconfdir}/profile.d/%{name}-jbr.sh
+
 %changelog
+* Fri Aug 12 2022 Chris Throup <chris@throup.eu>
+- Package Jetbrains JBR (optional package)
 * Mon Aug 8 2022 Chris Throup <chris@throup.eu>
 - New preview version
 * Sat Jul 23 2022 Chris Throup <chris@throup.eu>
