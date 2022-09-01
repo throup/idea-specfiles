@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       222.3739.54
+Version:       222.4167.9
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -495,19 +495,19 @@ Requires:      %{name}-core = %{version}
 %description plugin-yaml
 YAML plugin for Jetbrains IntelliJ.
 
-%package release
-Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
-Requires:      %{name} = %{version}
-%description release
-IntelliJ Java IDE based upon the Jetbrains Idea platform.
-Meta-package to track the current RELEASE version
-
-#%package eap
-#Summary:       IntelliJ Java IDE - Community Edition - EAP version
+#%package release
+#Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
 #Requires:      %{name} = %{version}
-#%description eap
+#%description release
 #IntelliJ Java IDE based upon the Jetbrains Idea platform.
-#Meta-package to track the current EAP version
+#Meta-package to track the current RELEASE version
+
+%package eap
+Summary:       IntelliJ Java IDE - Community Edition - EAP version
+Requires:      %{name} = %{version}
+%description eap
+IntelliJ Java IDE based upon the Jetbrains Idea platform.
+Meta-package to track the current EAP version
 
 
 %prep
@@ -923,19 +923,17 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
-%files release
-%{_datadir}/metainfo/%{uniquename}.metainfo.xml
-
-#%files eap
+#%files release
 #%{_datadir}/metainfo/%{uniquename}.metainfo.xml
+
+%files eap
+%{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %files jbr
 %{_exec_prefix}/lib/jvm/jbr-jetbrains
 %{_sysconfdir}/profile.d/%{name}-jbr.sh
 
 %changelog
-* Thu Aug 18 2022 Chris Throup <chris@throup.eu>
-- New release version
 * Fri Aug 12 2022 Chris Throup <chris@throup.eu>
 - Package Jetbrains JBR (optional package)
 * Mon Aug 8 2022 Chris Throup <chris@throup.eu>
