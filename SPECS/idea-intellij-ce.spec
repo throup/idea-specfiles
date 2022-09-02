@@ -638,7 +638,7 @@ cp -a out/idea-ce/dist.all/* \
       %{buildroot}%{_datadir}/%{shortname}/
 cp -a out/idea-ce/dist.unix.x64/* \
       %{buildroot}%{_datadir}/%{shortname}/
-cp -a build/download/jbr_jcef-17.0.3b469.37-linux-x64/jbr/* \
+cp -a build/download/jbr_jcef-*-linux-x64/jbr/* \
       %{buildroot}%{_exec_prefix}/lib/jvm/jbr-jetbrains
 rm -f %{buildroot}%{_exec_prefix}/lib/jvm/jbr-jetbrains/lib/libjceftesthelpers.so
 
