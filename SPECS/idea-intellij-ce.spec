@@ -82,7 +82,7 @@ Requires:      %{name}-plugin-testng = %{version}
 Requires:      %{name}-plugin-textmate = %{version}
 Requires:      %{name}-plugin-uidesigner = %{version}
 #Requires:      %{name}-plugin-vcs-changereminder = %{version}
-Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
+#Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
 Requires:      %{name}-plugin-webp = %{version}
 Requires:      %{name}-plugin-xpath = %{version}
 Requires:      %{name}-plugin-xslt-debugger = %{version}
@@ -460,12 +460,12 @@ UiDesigner plugin for Jetbrains IntelliJ.
 #%description plugin-vcs-changereminder
 #Vcs-changeReminder plugin for Jetbrains IntelliJ.
 
-%package plugin-vcs-git-featurestrainer
-Summary:       IntelliJ Java IDE - VCS Git FeaturesTrainer plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-vcs-git-featurestrainer
-VCS Git FeaturesTrainer plugin for Jetbrains IntelliJ.
+#%package plugin-vcs-git-featurestrainer
+#Summary:       IntelliJ Java IDE - VCS Git FeaturesTrainer plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-vcs-git-featurestrainer
+#VCS Git FeaturesTrainer plugin for Jetbrains IntelliJ.
 
 %package plugin-webp
 Summary:       IntelliJ Java IDE - Webp plugin
@@ -840,8 +840,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%files plugin-vcs-changereminder
 #%{_datadir}/%{shortname}/plugins/vcs-changeReminder
 
-%files plugin-vcs-git-featurestrainer
-%{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
+#%files plugin-vcs-git-featurestrainer
+#%{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 
 %files plugin-webp
 %{_datadir}/%{shortname}/plugins/webp
@@ -919,7 +919,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/textmate
 %exclude %{_datadir}/%{shortname}/plugins/uiDesigner
 #%exclude %{_datadir}/%{shortname}/plugins/vcs-changeReminder
-%exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
+#%exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 %exclude %{_datadir}/%{shortname}/plugins/webp
 %exclude %{_datadir}/%{shortname}/plugins/xpath
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
