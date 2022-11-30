@@ -1,21 +1,16 @@
-diff -urN intellij-community-idea-222.3345.118/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy intellij-community-idea-222.3345.118.patched/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy
---- intellij-community-idea-222.3345.118/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy	2022-07-22 18:41:45.000000000 +0200
-+++ intellij-community-idea-222.3345.118.patched/build/groovy/org/jetbrains/intellij/build/IdeaCommunityProperties.groovy	2022-07-27 21:03:20.800406519 +0200
-@@ -45,9 +45,7 @@
+diff -urN intellij-community-idea-223.4884.69/build/src/org/jetbrains/intellij/build/IdeaCommunityProperties.kt intellij-community-idea-223.4884.69.patched/build/src/org/jetbrains/intellij/build/IdeaCommunityProperties.kt
+--- intellij-community-idea-223.4884.69/build/src/org/jetbrains/intellij/build/IdeaCommunityProperties.kt	2022-09-22 12:27:58.000000000 +0200
++++ intellij-community-idea-223.4884.69.patched/build/src/org/jetbrains/intellij/build/IdeaCommunityProperties.kt	2022-09-24 15:30:29.399506770 +0200
+@@ -26,11 +26,7 @@
        "intellij.platform.debugger.testFramework",
        "intellij.platform.vcs.testFramework",
        "intellij.platform.externalSystem.testFramework",
 -      "intellij.maven.testFramework",
 -      "intellij.tools.ide.starter",
--      "intellij.tools.ide.metricsCollector"
+-      "intellij.tools.ide.metricsCollector",
+-      "intellij.tools.ide.starter.junit4",
+-      "intellij.tools.ide.starter.junit5"
 +      "intellij.maven.testFramework"
-     ]
-     mavenArtifacts.squashedModules += [
-       "intellij.platform.util.base",
-@@ -153,4 +151,4 @@
- 
-   @Override
-   String getOutputDirectoryName(ApplicationInfoProperties applicationInfo) { "idea-ce" }
--}
-\ No newline at end of file
-+}
+     )
+   }
+

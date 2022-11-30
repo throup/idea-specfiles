@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       222.4345.14
+Version:       223.7571.182
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -35,27 +35,27 @@ Requires:      %{name}-core = %{version}
 Requires:      %{name}-plugin-android = %{version}
 Requires:      %{name}-plugin-android-gradle-dsl = %{version}
 Requires:      %{name}-plugin-ant = %{version}
-Requires:      %{name}-plugin-bytecodeviewer = %{version}
+#Requires:      %{name}-plugin-bytecodeviewer = %{version}
 Requires:      %{name}-plugin-completionmlranking = %{version}
 Requires:      %{name}-plugin-configurationscript = %{version}
 Requires:      %{name}-plugin-copyright = %{version}
-Requires:      %{name}-plugin-coverage = %{version}
+#Requires:      %{name}-plugin-coverage = %{version}
 Requires:      %{name}-plugin-devkit = %{version}
 Requires:      %{name}-plugin-eclipse = %{version}
 Requires:      %{name}-plugin-editorconfig = %{version}
 Requires:      %{name}-plugin-emojipicker = %{version}
 #Requires:      %{name}-plugin-externalsystem-dependencyupdater = %{version}
 Requires:      %{name}-plugin-featurestrainer = %{version}
-Requires:      %{name}-plugin-git4idea = %{version}
-Requires:      %{name}-plugin-github = %{version}
+#Requires:      %{name}-plugin-git4idea = %{version}
+#Requires:      %{name}-plugin-github = %{version}
 Requires:      %{name}-plugin-gradle = %{version}
 Requires:      %{name}-plugin-gradle-dependencyupdater = %{version}
 Requires:      %{name}-plugin-gradle-java = %{version}
 Requires:      %{name}-plugin-gradle-java-maven = %{version}
 Requires:      %{name}-plugin-grazie = %{version}
 Requires:      %{name}-plugin-groovy = %{version}
-Requires:      %{name}-plugin-hg4idea = %{version}
-Requires:      %{name}-plugin-intellilang = %{version}
+#Requires:      %{name}-plugin-hg4idea = %{version}
+#Requires:      %{name}-plugin-intellilang = %{version}
 Requires:      %{name}-plugin-java = %{version}
 Requires:      %{name}-plugin-java-decompiler = %{version}
 Requires:      %{name}-plugin-javafx = %{version}
@@ -71,18 +71,18 @@ Requires:      %{name}-plugin-package-search = %{version}
 Requires:      %{name}-plugin-platform-images = %{version}
 Requires:      %{name}-plugin-properties = %{version}
 Requires:      %{name}-plugin-repository-search = %{version}
-Requires:      %{name}-plugin-settings-repository = %{version}
+#Requires:      %{name}-plugin-settings-repository = %{version}
 Requires:      %{name}-plugin-sh = %{version}
-Requires:      %{name}-plugin-smali = %{version}
-Requires:      %{name}-plugin-stream-debugger = %{version}
-Requires:      %{name}-plugin-svn4idea = %{version}
+#Requires:      %{name}-plugin-smali = %{version}
+#Requires:      %{name}-plugin-stream-debugger = %{version}
+#Requires:      %{name}-plugin-svn4idea = %{version}
 Requires:      %{name}-plugin-tasks = %{version}
 Requires:      %{name}-plugin-terminal = %{version}
 Requires:      %{name}-plugin-testng = %{version}
 Requires:      %{name}-plugin-textmate = %{version}
 Requires:      %{name}-plugin-uidesigner = %{version}
 #Requires:      %{name}-plugin-vcs-changereminder = %{version}
-Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
+#Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
 Requires:      %{name}-plugin-webp = %{version}
 Requires:      %{name}-plugin-xpath = %{version}
 Requires:      %{name}-plugin-xslt-debugger = %{version}
@@ -129,12 +129,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-android-gradle-dsl
 Android Gradle DSL plugin for Jetbrains IntelliJ.
 
-%package plugin-bytecodeviewer
-Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-bytecodeviewer
-ByteCodeViewer plugin for Jetbrains IntelliJ.
+#%package plugin-bytecodeviewer
+#Summary:       IntelliJ Java IDE - ByteCodeViewer plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-bytecodeviewer
+#ByteCodeViewer plugin for Jetbrains IntelliJ.
 
 %package plugin-completionmlranking
 Summary:       IntelliJ Java IDE - Machine Learning Code Completion plugin
@@ -159,12 +159,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-copyright
 Copyright plugin for Jetbrains IntelliJ.
 
-%package plugin-coverage
-Summary:       IntelliJ Java IDE - Coverage plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-coverage
-Coverage plugin for Jetbrains IntelliJ.
+#%package plugin-coverage
+#Summary:       IntelliJ Java IDE - Coverage plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-coverage
+#Coverage plugin for Jetbrains IntelliJ.
 
 %package plugin-devkit
 Summary:       IntelliJ Java IDE - Devkit plugin
@@ -201,19 +201,19 @@ Emojipicker plugin for Jetbrains IntelliJ.
 #%description plugin-externalsystem-dependencyupdater
 #External System Dependency Updater plugin for Jetbrains IntelliJ.
 
-%package plugin-git4idea
-Summary:       IntelliJ Java IDE - Git plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-git4idea
-Git plugin for Jetbrains IntelliJ.
+#%package plugin-git4idea
+#Summary:       IntelliJ Java IDE - Git plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-git4idea
+#Git plugin for Jetbrains IntelliJ.
 
-%package plugin-github
-Summary:       IntelliJ Java IDE - Github plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-github
-Github plugin for Jetbrains IntelliJ.
+#%package plugin-github
+#Summary:       IntelliJ Java IDE - Github plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-github
+#Github plugin for Jetbrains IntelliJ.
 
 %package plugin-gradle
 Summary:       IntelliJ Java IDE - Gradle plugin
@@ -320,12 +320,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-maven-model
 Maven Model plugin for Jetbrains IntelliJ.
 
-%package plugin-intellilang
-Summary:       IntelliJ Java IDE - Intellilang plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-intellilang
-IntelliLang plugin for Jetbrains IntelliJ.
+#%package plugin-intellilang
+#Summary:       IntelliJ Java IDE - Intellilang plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-intellilang
+#IntelliLang plugin for Jetbrains IntelliJ.
 
 %package plugin-kotlin
 Summary:       IntelliJ Java IDE - Kotlin plugin
@@ -348,12 +348,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-featurestrainer
 FeaturesTrainer plugin for Jetbrains IntelliJ.
 
-%package plugin-hg4idea
-Summary:       IntelliJ Java IDE - Hg4idea plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-hg4idea
-Hg4idea plugin for Jetbrains IntelliJ.
+#%package plugin-hg4idea
+#Summary:       IntelliJ Java IDE - Hg4idea plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-hg4idea
+#Hg4idea plugin for Jetbrains IntelliJ.
 
 %package plugin-package-search
 Summary:       IntelliJ Java IDE - PackageSearch plugin
@@ -383,12 +383,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-repository-search
 Repository-search plugin for Jetbrains IntelliJ.
 
-%package plugin-settings-repository
-Summary:       IntelliJ Java IDE - Settings-repository plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-settings-repository
-Settings-repository plugin for Jetbrains IntelliJ.
+#%package plugin-settings-repository
+#Summary:       IntelliJ Java IDE - Settings-repository plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-settings-repository
+#Settings-repository plugin for Jetbrains IntelliJ.
 
 %package plugin-sh
 Summary:       IntelliJ Java IDE - Sh plugin
@@ -397,26 +397,26 @@ Requires:      %{name}-core = %{version}
 %description plugin-sh
 Sh plugin for Jetbrains IntelliJ.
 
-%package plugin-smali
-Summary:       IntelliJ Java IDE - Smali plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-smali
-Smali plugin for Jetbrains IntelliJ.
+#%package plugin-smali
+#Summary:       IntelliJ Java IDE - Smali plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-smali
+#Smali plugin for Jetbrains IntelliJ.
 
-%package plugin-stream-debugger
-Summary:       IntelliJ Java IDE - Stream-debugger plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-stream-debugger
-Stream-debugger plugin for Jetbrains IntelliJ.
+#%package plugin-stream-debugger
+#Summary:       IntelliJ Java IDE - Stream-debugger plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-stream-debugger
+#Stream-debugger plugin for Jetbrains IntelliJ.
 
-%package plugin-svn4idea
-Summary:       IntelliJ Java IDE - Svn4idea plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-svn4idea
-Svn4idea plugin for Jetbrains IntelliJ.
+#%package plugin-svn4idea
+#Summary:       IntelliJ Java IDE - Svn4idea plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-svn4idea
+#Svn4idea plugin for Jetbrains IntelliJ.
 
 %package plugin-tasks
 Summary:       IntelliJ Java IDE - Tasks plugin
@@ -460,12 +460,12 @@ UiDesigner plugin for Jetbrains IntelliJ.
 #%description plugin-vcs-changereminder
 #Vcs-changeReminder plugin for Jetbrains IntelliJ.
 
-%package plugin-vcs-git-featurestrainer
-Summary:       IntelliJ Java IDE - VCS Git FeaturesTrainer plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-vcs-git-featurestrainer
-VCS Git FeaturesTrainer plugin for Jetbrains IntelliJ.
+#%package plugin-vcs-git-featurestrainer
+#Summary:       IntelliJ Java IDE - VCS Git FeaturesTrainer plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-vcs-git-featurestrainer
+#VCS Git FeaturesTrainer plugin for Jetbrains IntelliJ.
 
 %package plugin-webp
 Summary:       IntelliJ Java IDE - Webp plugin
@@ -693,8 +693,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-android-gradle-dsl
 %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 
-%files plugin-bytecodeviewer
-%{_datadir}/%{shortname}/plugins/ByteCodeViewer
+#%files plugin-bytecodeviewer
+#%{_datadir}/%{shortname}/plugins/ByteCodeViewer
 
 %files plugin-completionmlranking
 %{_datadir}/%{shortname}/plugins/completionMlRanking
@@ -705,8 +705,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-copyright
 %{_datadir}/%{shortname}/plugins/copyright
 
-%files plugin-coverage
-%{_datadir}/%{shortname}/plugins/coverage
+#%files plugin-coverage
+#%{_datadir}/%{shortname}/plugins/coverage
 
 %files plugin-devkit
 %{_datadir}/%{shortname}/plugins/devkit
@@ -723,11 +723,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%files plugin-externalsystem-dependencyupdater
 #%{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
 
-%files plugin-git4idea
-%{_datadir}/%{shortname}/plugins/git4idea
+#%files plugin-git4idea
+#%{_datadir}/%{shortname}/plugins/git4idea
 
-%files plugin-github
-%{_datadir}/%{shortname}/plugins/github
+#%files plugin-github
+#%{_datadir}/%{shortname}/plugins/github
 
 %files plugin-gradle
 %{_datadir}/%{shortname}/plugins/gradle
@@ -780,8 +780,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-maven-model
 %{_datadir}/%{shortname}/plugins/maven-model
 
-%files plugin-intellilang
-%{_datadir}/%{shortname}/plugins/IntelliLang
+#%files plugin-intellilang
+#%{_datadir}/%{shortname}/plugins/IntelliLang
 
 %files plugin-kotlin
 %{_datadir}/%{shortname}/plugins/Kotlin
@@ -792,8 +792,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-featurestrainer
 %{_datadir}/%{shortname}/plugins/featuresTrainer
 
-%files plugin-hg4idea
-%{_datadir}/%{shortname}/plugins/hg4idea
+#%files plugin-hg4idea
+#%{_datadir}/%{shortname}/plugins/hg4idea
 
 %files plugin-package-search
 %{_datadir}/%{shortname}/plugins/packageSearch
@@ -807,20 +807,20 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-repository-search
 %{_datadir}/%{shortname}/plugins/repository-search
 
-%files plugin-settings-repository
-%{_datadir}/%{shortname}/plugins/settings-repository
+#%files plugin-settings-repository
+#%{_datadir}/%{shortname}/plugins/settings-repository
 
 %files plugin-sh
 %{_datadir}/%{shortname}/plugins/sh
 
-%files plugin-smali
-%{_datadir}/%{shortname}/plugins/smali
+#%files plugin-smali
+#%{_datadir}/%{shortname}/plugins/smali
 
-%files plugin-stream-debugger
-%{_datadir}/%{shortname}/plugins/stream-debugger
+#%files plugin-stream-debugger
+#%{_datadir}/%{shortname}/plugins/stream-debugger
 
-%files plugin-svn4idea
-%{_datadir}/%{shortname}/plugins/svn4idea
+#%files plugin-svn4idea
+#%{_datadir}/%{shortname}/plugins/svn4idea
 
 %files plugin-tasks
 %{_datadir}/%{shortname}/plugins/tasks
@@ -840,8 +840,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%files plugin-vcs-changereminder
 #%{_datadir}/%{shortname}/plugins/vcs-changeReminder
 
-%files plugin-vcs-git-featurestrainer
-%{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
+#%files plugin-vcs-git-featurestrainer
+#%{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 
 %files plugin-webp
 %{_datadir}/%{shortname}/plugins/webp
@@ -872,18 +872,18 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/ant
 %exclude %{_datadir}/%{shortname}/plugins/android
 %exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
-%exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
+#%exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
 %exclude %{_datadir}/%{shortname}/plugins/completionMlRanking
 %exclude %{_datadir}/%{shortname}/plugins/configurationScript
 %exclude %{_datadir}/%{shortname}/plugins/copyright
-%exclude %{_datadir}/%{shortname}/plugins/coverage
+#%exclude %{_datadir}/%{shortname}/plugins/coverage
 %exclude %{_datadir}/%{shortname}/plugins/devkit
 %exclude %{_datadir}/%{shortname}/plugins/eclipse
 %exclude %{_datadir}/%{shortname}/plugins/editorconfig
 %exclude %{_datadir}/%{shortname}/plugins/emojipicker
 #%exclude %{_datadir}/%{shortname}/plugins/externalSystem-dependencyUpdater
-%exclude %{_datadir}/%{shortname}/plugins/git4idea
-%exclude %{_datadir}/%{shortname}/plugins/github
+#%exclude %{_datadir}/%{shortname}/plugins/git4idea
+#%exclude %{_datadir}/%{shortname}/plugins/github
 %exclude %{_datadir}/%{shortname}/plugins/gradle
 %exclude %{_datadir}/%{shortname}/plugins/gradle-dependencyUpdater
 %exclude %{_datadir}/%{shortname}/plugins/gradle-java
@@ -899,27 +899,27 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/markdown
 %exclude %{_datadir}/%{shortname}/plugins/maven
 %exclude %{_datadir}/%{shortname}/plugins/maven-model
-%exclude %{_datadir}/%{shortname}/plugins/IntelliLang
+#%exclude %{_datadir}/%{shortname}/plugins/IntelliLang
 %exclude %{_datadir}/%{shortname}/plugins/Kotlin
 %exclude %{_datadir}/%{shortname}/plugins/lombok
 %exclude %{_datadir}/%{shortname}/plugins/featuresTrainer
-%exclude %{_datadir}/%{shortname}/plugins/hg4idea
+#%exclude %{_datadir}/%{shortname}/plugins/hg4idea
 %exclude %{_datadir}/%{shortname}/plugins/packageSearch
 %exclude %{_datadir}/%{shortname}/plugins/platform-images
 %exclude %{_datadir}/%{shortname}/plugins/properties
 %exclude %{_datadir}/%{shortname}/plugins/repository-search
-%exclude %{_datadir}/%{shortname}/plugins/settings-repository
+#%exclude %{_datadir}/%{shortname}/plugins/settings-repository
 %exclude %{_datadir}/%{shortname}/plugins/sh
-%exclude %{_datadir}/%{shortname}/plugins/smali
-%exclude %{_datadir}/%{shortname}/plugins/stream-debugger
-%exclude %{_datadir}/%{shortname}/plugins/svn4idea
+#%exclude %{_datadir}/%{shortname}/plugins/smali
+#%exclude %{_datadir}/%{shortname}/plugins/stream-debugger
+#%exclude %{_datadir}/%{shortname}/plugins/svn4idea
 %exclude %{_datadir}/%{shortname}/plugins/tasks
 %exclude %{_datadir}/%{shortname}/plugins/terminal
 %exclude %{_datadir}/%{shortname}/plugins/testng
 %exclude %{_datadir}/%{shortname}/plugins/textmate
 %exclude %{_datadir}/%{shortname}/plugins/uiDesigner
 #%exclude %{_datadir}/%{shortname}/plugins/vcs-changeReminder
-%exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
+#%exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 %exclude %{_datadir}/%{shortname}/plugins/webp
 %exclude %{_datadir}/%{shortname}/plugins/xpath
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
