@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       223.8214.27
+Version:       223.8214.52
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -495,13 +495,13 @@ Requires:      %{name}-core = %{version}
 %description plugin-yaml
 YAML plugin for Jetbrains IntelliJ.
 
-#%package release
-#Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
-#Requires:      %{name} = %{version}
-#Conflicts:     %{name}-eap
-#%description release
-#IntelliJ Java IDE based upon the Jetbrains Idea platform.
-#Meta-package to track the current RELEASE version
+%package release
+Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
+Requires:      %{name} = %{version}
+Conflicts:     %{name}-eap
+%description release
+IntelliJ Java IDE based upon the Jetbrains Idea platform.
+Meta-package to track the current RELEASE version
 
 %package eap
 Summary:       IntelliJ Java IDE - Community Edition - EAP version
@@ -925,8 +925,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
-#%files release
-#%{_datadir}/metainfo/%{uniquename}.metainfo.xml
+%files release
+%{_datadir}/metainfo/%{uniquename}.metainfo.xml
 
 %files eap
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
