@@ -8,7 +8,7 @@
 %define debug_package %{nil}
 
 Name:          idea-intellij-ce
-Version:       223.8836.41
+Version:       231.8109.175
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -20,8 +20,8 @@ Group:         Development
 License:       Apache License
 URL:           https://github.com/JetBrains/intellij-community/tree/%{shortname}/%{version}
 Source0:       https://github.com/JetBrains/intellij-community/archive/%{shortname}/%{version}.tar.gz
-Patch0:        python3.patch
-Patch1:        myxh.patch
+#Patch0:        python3.patch
+#Patch1:        myxh.patch
 
 BuildRequires: ant
 BuildRequires: appstream
@@ -85,7 +85,7 @@ Requires:      %{name}-plugin-uidesigner = %{version}
 #Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
 Requires:      %{name}-plugin-webp = %{version}
 Requires:      %{name}-plugin-xpath = %{version}
-Requires:      %{name}-plugin-xslt-debugger = %{version}
+#Requires:      %{name}-plugin-xslt-debugger = %{version}
 Requires:      %{name}-plugin-yaml = %{version}
 
 %description
@@ -481,12 +481,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-xpath
 Xpath plugin for Jetbrains IntelliJ.
 
-%package plugin-xslt-debugger
-Summary:       IntelliJ Java IDE - XSLT Debugger plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-xslt-debugger
-XSLT Debugger plugin for Jetbrains IntelliJ.
+#%package plugin-xslt-debugger
+#Summary:       IntelliJ Java IDE - XSLT Debugger plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-xslt-debugger
+#XSLT Debugger plugin for Jetbrains IntelliJ.
 
 %package plugin-yaml
 Summary:       IntelliJ Java IDE - YAML plugin
@@ -514,8 +514,8 @@ Meta-package to track the current EAP version
 
 %prep
 %setup -qn "%{buildname}-%{version}"
-%patch0 -p1
-%patch1 -p1
+#%patch0 -p1
+#%patch1 -p1
 
 echo %{version} > build.txt
 git clone --depth=1 -b idea/%{version} git://git.jetbrains.org/idea/android.git
@@ -849,8 +849,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-xpath
 %{_datadir}/%{shortname}/plugins/xpath
 
-%files plugin-xslt-debugger
-%{_datadir}/%{shortname}/plugins/xslt-debugger
+#%files plugin-xslt-debugger
+#%{_datadir}/%{shortname}/plugins/xslt-debugger
 
 %files plugin-yaml
 %{_datadir}/%{shortname}/plugins/yaml
@@ -922,7 +922,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 %exclude %{_datadir}/%{shortname}/plugins/webp
 %exclude %{_datadir}/%{shortname}/plugins/xpath
-%exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
+#%exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
 %files release
