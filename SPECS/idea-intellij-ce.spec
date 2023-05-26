@@ -6,9 +6,10 @@
 
 %global __python %{__python3}
 %define debug_package %{nil}
+%define isRelease "false"
 
 Name:          idea-intellij-ce
-Version:       231.8770.65
+Version:       231.9011.34
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
@@ -495,6 +496,7 @@ Requires:      %{name}-core = %{version}
 %description plugin-yaml
 YAML plugin for Jetbrains IntelliJ.
 
+%if %{isRelease} == "true"
 %package release
 Summary:       IntelliJ Java IDE - Community Edition - RELEASE version
 Requires:      %{name} = %{version}
@@ -502,6 +504,7 @@ Conflicts:     %{name}-eap
 %description release
 IntelliJ Java IDE based upon the Jetbrains Idea platform.
 Meta-package to track the current RELEASE version
+%endif
 
 %package eap
 Summary:       IntelliJ Java IDE - Community Edition - EAP version
@@ -925,8 +928,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
+%if %{isRelease} == "true"
 %files release
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
+%endif
 
 %files eap
 %{_datadir}/metainfo/%{uniquename}.metainfo.xml
