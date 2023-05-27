@@ -9,7 +9,7 @@
 %define isRelease "false"
 
 Name:          idea-intellij-ce
-Version:       231.9011.34
+Version:       232.6095.10
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
