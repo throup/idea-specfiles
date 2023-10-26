@@ -64,11 +64,11 @@ Requires:      %{name}-plugin-java-i18n = %{version}
 Requires:      %{name}-plugin-java-ide-customization = %{version}
 Requires:      %{name}-plugin-junit = %{version}
 Requires:      %{name}-plugin-kotlin = %{version}
-Requires:      %{name}-plugin-lombok = %{version}
+#Requires:      %{name}-plugin-lombok = %{version}
 Requires:      %{name}-plugin-markdown = %{version}
 Requires:      %{name}-plugin-maven = %{version}
 Requires:      %{name}-plugin-maven-model = %{version}
-Requires:      %{name}-plugin-package-search = %{version}
+#Requires:      %{name}-plugin-package-search = %{version}
 Requires:      %{name}-plugin-platform-images = %{version}
 Requires:      %{name}-plugin-properties = %{version}
 Requires:      %{name}-plugin-repository-search = %{version}
@@ -335,12 +335,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-kotlin
 Kotlin plugin for Jetbrains IntelliJ.
 
-%package plugin-lombok
-Summary:       IntelliJ Java IDE - Lombok plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-lombok
-Lombok plugin for Jetbrains IntelliJ.
+#%package plugin-lombok
+#Summary:       IntelliJ Java IDE - Lombok plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-lombok
+#Lombok plugin for Jetbrains IntelliJ.
 
 %package plugin-featurestrainer
 Summary:       IntelliJ Java IDE - FeaturesTrainer plugin
@@ -356,12 +356,12 @@ FeaturesTrainer plugin for Jetbrains IntelliJ.
 #%description plugin-hg4idea
 #Hg4idea plugin for Jetbrains IntelliJ.
 
-%package plugin-package-search
-Summary:       IntelliJ Java IDE - PackageSearch plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-package-search
-PackageSearch plugin for Jetbrains IntelliJ.
+#%package plugin-package-search
+#Summary:       IntelliJ Java IDE - PackageSearch plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-package-search
+#PackageSearch plugin for Jetbrains IntelliJ.
 
 %package plugin-platform-images
 Summary:       IntelliJ Java IDE - Platform-images plugin
@@ -789,8 +789,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-kotlin
 %{_datadir}/%{shortname}/plugins/Kotlin
 
-%files plugin-lombok
-%{_datadir}/%{shortname}/plugins/lombok
+#%files plugin-lombok
+#%{_datadir}/%{shortname}/plugins/lombok
 
 %files plugin-featurestrainer
 %{_datadir}/%{shortname}/plugins/featuresTrainer
@@ -798,8 +798,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%files plugin-hg4idea
 #%{_datadir}/%{shortname}/plugins/hg4idea
 
-%files plugin-package-search
-%{_datadir}/%{shortname}/plugins/packageSearch
+#%files plugin-package-search
+#%{_datadir}/%{shortname}/plugins/packageSearch
 
 %files plugin-platform-images
 %{_datadir}/%{shortname}/plugins/platform-images
@@ -904,10 +904,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %exclude %{_datadir}/%{shortname}/plugins/maven-model
 #%exclude %{_datadir}/%{shortname}/plugins/IntelliLang
 %exclude %{_datadir}/%{shortname}/plugins/Kotlin
-%exclude %{_datadir}/%{shortname}/plugins/lombok
+#%exclude %{_datadir}/%{shortname}/plugins/lombok
 %exclude %{_datadir}/%{shortname}/plugins/featuresTrainer
 #%exclude %{_datadir}/%{shortname}/plugins/hg4idea
-%exclude %{_datadir}/%{shortname}/plugins/packageSearch
+#%exclude %{_datadir}/%{shortname}/plugins/packageSearch
 %exclude %{_datadir}/%{shortname}/plugins/platform-images
 %exclude %{_datadir}/%{shortname}/plugins/properties
 %exclude %{_datadir}/%{shortname}/plugins/repository-search
