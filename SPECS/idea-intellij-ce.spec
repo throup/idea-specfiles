@@ -773,12 +773,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 
 %files plugin-maven
 %{_datadir}/%{shortname}/plugins/maven
-%{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/linux64
-%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/windows32
-%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/windows64
-%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/osx
-%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/freebsd32
-%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/freebsd64
+#%{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/linux64
+#%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/windows32
+#%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/windows64
+#%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/osx
+#%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/freebsd32
+#%exclude %{_datadir}/%{shortname}/plugins/maven/lib/maven3/lib/jansi-native/freebsd64
 
 %files plugin-maven-model
 %{_datadir}/%{shortname}/plugins/maven-model
