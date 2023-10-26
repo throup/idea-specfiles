@@ -6,10 +6,10 @@
 
 %global __python %{__python3}
 %define debug_package %{nil}
-%define isRelease "false"
+%define isRelease "true"
 
 Name:          idea-intellij-ce
-Version:       232.6095.10
+Version:       232.10072.27
 Release:       1%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
