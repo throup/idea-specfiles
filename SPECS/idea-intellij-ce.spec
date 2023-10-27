@@ -10,7 +10,7 @@
 
 Name:          idea-intellij-ce
 Version:       232.10203.10
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       IntelliJ Java IDE - Community Edition
 
 # Original package name was a little long...
@@ -676,6 +676,8 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications \
                      %{uniquename}.desktop
 
 cp %{uniquename}.metainfo.xml %{buildroot}%{_datadir}/metainfo/
+
+chmod -R +r %{buildroot}%{_datadir}/%{shortname}
 
 %post -p /sbin/ldconfig
 
