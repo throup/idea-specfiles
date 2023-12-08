@@ -33,15 +33,15 @@ BuildRequires: java-sdk-11
 Requires:      java-11
 Requires:      jre-11
 Requires:      %{name}-core = %{version}
-Requires:      %{name}-plugin-android = %{version}
+#Requires:      %{name}-plugin-android = %{version}
 Requires:      %{name}-plugin-android-gradle-dsl = %{version}
-Requires:      %{name}-plugin-ant = %{version}
+#Requires:      %{name}-plugin-ant = %{version}
 #Requires:      %{name}-plugin-bytecodeviewer = %{version}
 Requires:      %{name}-plugin-completionmlranking = %{version}
 Requires:      %{name}-plugin-configurationscript = %{version}
 Requires:      %{name}-plugin-copyright = %{version}
 #Requires:      %{name}-plugin-coverage = %{version}
-Requires:      %{name}-plugin-devkit = %{version}
+#Requires:      %{name}-plugin-devkit = %{version}
 Requires:      %{name}-plugin-eclipse = %{version}
 Requires:      %{name}-plugin-editorconfig = %{version}
 Requires:      %{name}-plugin-emojipicker = %{version}
@@ -85,7 +85,7 @@ Requires:      %{name}-plugin-uidesigner = %{version}
 #Requires:      %{name}-plugin-vcs-changereminder = %{version}
 #Requires:      %{name}-plugin-vcs-git-featurestrainer = %{version}
 Requires:      %{name}-plugin-webp = %{version}
-Requires:      %{name}-plugin-xpath = %{version}
+#Requires:      %{name}-plugin-xpath = %{version}
 #Requires:      %{name}-plugin-xslt-debugger = %{version}
 Requires:      %{name}-plugin-yaml = %{version}
 
@@ -108,20 +108,20 @@ Java runtime, provided by Jetbrains, built especially for the IntelliJ IDE.
 This is an optional package, but guarantees full functionality which may not be available
 when running the IDE on the standard OpenJDK distributions.
 
-%package plugin-ant
-Summary:       IntelliJ Java IDE - Ant plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-Requires:      mvn(ant:ant)
-%description plugin-ant
-Ant plugin for Jetbrains IntelliJ.
+#%package plugin-ant
+#Summary:       IntelliJ Java IDE - Ant plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#Requires:      mvn(ant:ant)
+#%description plugin-ant
+#Ant plugin for Jetbrains IntelliJ.
 
-%package plugin-android
-Summary:       IntelliJ Java IDE - Android plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-android
-Android plugin for Jetbrains IntelliJ.
+#%package plugin-android
+#Summary:       IntelliJ Java IDE - Android plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-android
+#Android plugin for Jetbrains IntelliJ.
 
 %package plugin-android-gradle-dsl
 Summary:       IntelliJ Java IDE - Android Gradle DSL plugin
@@ -167,12 +167,12 @@ Copyright plugin for Jetbrains IntelliJ.
 #%description plugin-coverage
 #Coverage plugin for Jetbrains IntelliJ.
 
-%package plugin-devkit
-Summary:       IntelliJ Java IDE - Devkit plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-devkit
-Devkit plugin for Jetbrains IntelliJ.
+#%package plugin-devkit
+#Summary:       IntelliJ Java IDE - Devkit plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-devkit
+#Devkit plugin for Jetbrains IntelliJ.
 
 %package plugin-eclipse
 Summary:       IntelliJ Java IDE - Eclipse plugin
@@ -475,12 +475,12 @@ Requires:      %{name}-core = %{version}
 %description plugin-webp
 Webp plugin for Jetbrains IntelliJ.
 
-%package plugin-xpath
-Summary:       IntelliJ Java IDE - Xpath plugin
-Group:         Development
-Requires:      %{name}-core = %{version}
-%description plugin-xpath
-Xpath plugin for Jetbrains IntelliJ.
+#%package plugin-xpath
+#Summary:       IntelliJ Java IDE - Xpath plugin
+#Group:         Development
+#Requires:      %{name}-core = %{version}
+#%description plugin-xpath
+#Xpath plugin for Jetbrains IntelliJ.
 
 #%package plugin-xslt-debugger
 #Summary:       IntelliJ Java IDE - XSLT Debugger plugin
@@ -688,12 +688,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 
 %files
 
-%files plugin-ant
-%{_datadir}/%{shortname}/lib/ant
-%{_datadir}/%{shortname}/plugins/ant
+#%files plugin-ant
+#%{_datadir}/%{shortname}/lib/ant
+#%{_datadir}/%{shortname}/plugins/ant
 
-%files plugin-android
-%{_datadir}/%{shortname}/plugins/android
+#%files plugin-android
+#%{_datadir}/%{shortname}/plugins/android
 
 %files plugin-android-gradle-dsl
 %{_datadir}/%{shortname}/plugins/android-gradle-dsl
@@ -713,8 +713,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%files plugin-coverage
 #%{_datadir}/%{shortname}/plugins/coverage
 
-%files plugin-devkit
-%{_datadir}/%{shortname}/plugins/devkit
+#%files plugin-devkit
+#%{_datadir}/%{shortname}/plugins/devkit
 
 %files plugin-eclipse
 %{_datadir}/%{shortname}/plugins/eclipse
@@ -851,8 +851,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %files plugin-webp
 %{_datadir}/%{shortname}/plugins/webp
 
-%files plugin-xpath
-%{_datadir}/%{shortname}/plugins/xpath
+#%files plugin-xpath
+#%{_datadir}/%{shortname}/plugins/xpath
 
 #%files plugin-xslt-debugger
 #%{_datadir}/%{shortname}/plugins/xslt-debugger
@@ -874,15 +874,15 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{uniquename}.svg
 %{_sysconfdir}/profile.d/%{name}-default.sh
 %exclude %{_datadir}/%{shortname}/lib/ant
-%exclude %{_datadir}/%{shortname}/plugins/ant
-%exclude %{_datadir}/%{shortname}/plugins/android
+#%exclude %{_datadir}/%{shortname}/plugins/ant
+#%exclude %{_datadir}/%{shortname}/plugins/android
 %exclude %{_datadir}/%{shortname}/plugins/android-gradle-dsl
 #%exclude %{_datadir}/%{shortname}/plugins/ByteCodeViewer
 %exclude %{_datadir}/%{shortname}/plugins/completionMlRanking
 %exclude %{_datadir}/%{shortname}/plugins/configurationScript
 %exclude %{_datadir}/%{shortname}/plugins/copyright
 #%exclude %{_datadir}/%{shortname}/plugins/coverage
-%exclude %{_datadir}/%{shortname}/plugins/devkit
+#%exclude %{_datadir}/%{shortname}/plugins/devkit
 %exclude %{_datadir}/%{shortname}/plugins/eclipse
 %exclude %{_datadir}/%{shortname}/plugins/editorconfig
 %exclude %{_datadir}/%{shortname}/plugins/emojipicker
@@ -926,7 +926,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 #%exclude %{_datadir}/%{shortname}/plugins/vcs-changeReminder
 #%exclude %{_datadir}/%{shortname}/plugins/vcs-git-featuresTrainer
 %exclude %{_datadir}/%{shortname}/plugins/webp
-%exclude %{_datadir}/%{shortname}/plugins/xpath
+#%exclude %{_datadir}/%{shortname}/plugins/xpath
 #%exclude %{_datadir}/%{shortname}/plugins/xslt-debugger
 %exclude %{_datadir}/%{shortname}/plugins/yaml
 
